@@ -4,6 +4,8 @@ import "./globals.css";
 import { SITE } from "@/lib/site";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Script from "next/script";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Header />
         {children}
-        <Footer />
+        <Footer />{/* CHAT WIDGET – minimirunko */}
+<div id="chat-widget">
+  <button id="chat-toggle" aria-expanded="false">💬</button>
+  <div id="chat-box">
+    <div id="chat-header">Leo Digital botti🤖</div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <input id="chat-input" placeholder="Kirjoita viesti…" />
+      <button id="send-chat">Lähetä</button>
+    </div>
+  </div>
+</div>
+
+<Script src="/chat.js" strategy="afterInteractive" />
       </body>
     </html>
   );

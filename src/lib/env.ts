@@ -18,4 +18,5 @@ export const env = {
   RESEND_API_KEY: process.env.RESEND_API_KEY!,
   CONTACT_TO: process.env.CONTACT_TO!,
   CONTACT_FROM: process.env.CONTACT_FROM!,
+  BOT_BASE_URL: process.env.BOT_BASE_URL!, // ← tämä lisäys
 } as const;

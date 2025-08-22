@@ -1,3 +1,220 @@
 @import "tailwindcss";
 
 html { scroll-behavior: smooth; }
+
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 9999;
+}
+
+/* Suljettuna: sininen tausta + oma kuva */
+#chat-toggle {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;            /* keskitys */
+  align-items: center;             /* keskitys */
+  justify-content: center;         /* keskitys */
+  line-height: 1;                  /* estää “tippumisen” */
+  box-sizing: border-box;
+  padding: 0;
+
+  background-color: #2563eb;
+  background-image: url('/services/chattinappi.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+
+  color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+#chat-toggle:hover {
+  background-color: #1d4ed8;
+}
+
+#chat-box {
+  width: 360px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* ➕ Animaation kannalta tärkeät asetukset: */
+  position: fixed;
+  bottom: 80px; /* hieman ylös napista */
+  right: 20px;  /* samassa kohdassa kuin nappi */
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#chat-header {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
+#chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f1f1f1;
+}
+
+#chat-input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+#send-chat {
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border:0;border-radius:12px;
+  background:linear-gradient(135deg,#8e2de2,#4a00e0);
+  color:#fff;cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  transition:filter .15s ease, transform .05s ease;
+  position: relative;
+  font-size: 0; /* piilottaa mahdollisen tekstin ilman HTML-muutoksia */
+}
+
+/* Paper plane – pikselintarkka keskitys */
+#send-chat::after {
+  content: "";
+  width: 18px;          /* halutessasi 16px jos näyttää ahtaalta */
+  height: 18px;
+  position: absolute;   /* keskitys ei riipu gridistä */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* täsmäkeskitys */
+  background: #fff;
+
+  /* Yhden rivin maski -> ei häiritse korostusta */
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+/* Vaihtoehto A: hienovarainen hover kirkastuksella */
+#send-chat:hover {
+  filter: brightness(1.07);
+}
+/* Napin painallus + näppäimistöfokus näkyviin */
+#send-chat:active { transform: translateY(1px); }
+#send-chat:focus-visible {
+  outline: 3px solid rgba(142,45,226,.35);
+  outline-offset: 2px;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #2563eb;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background-color: #eee;
+  color: black;
+  border-bottom-left-radius: 0;
+}
+
+/* Auki-tila: valkoinen tausta + punainen ❌, kuva pois */
+#chat-toggle.close-mode {
+  background-color: white;
+  color: red;
+  border: 1px solid #ccc;
+  background-image: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#chat-box.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- LISÄYS: typing-indikaattori --- */
+.message .dots {
+  display: inline-flex;
+  gap: 6px;
+  vertical-align: middle;
+}
+.message .dots i {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: typingBounce 1s infinite ease-in-out;
+}
+.message .dots i:nth-child(2) { animation-delay: .15s; }
+.message .dots i:nth-child(3) { animation-delay: .3s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .4; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+
+/* --- LISÄYS: aikaleima --- */
+.message .timestamp {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.75;
+}
+.message.user .timestamp {
+  color: rgba(255,255,255,0.85);
+}
+.message.bot .timestamp {
+  color: #555;
+}
