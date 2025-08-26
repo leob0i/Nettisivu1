@@ -5,7 +5,7 @@ export default function About() {
       <h2 className="text-2xl sm:text-3xl font-bold text-center">Meistä</h2>
       <p className="mt-2 text-slate-600 max-w-2xl mx-auto text-center">
         Olemme uusi ja nuorekas yritys joka suunnittelee ja toteuttaa asiakaspalvelubotteja, verkkosivuja, mobiilisovelluksia tai mitä vain
-        ketterästi, tulokset ja selkeys edellä! Toimimme luotettavasti sekä jokainen asikas on meille yksilö, ja siksi räätälöimme palvelumme juuri sinun tarpeisiisi sopivaksi. Ota rohkeasti yhteyttä ja pyydä tarjous!
+        ketterästi, tulokset ja selkeys edellä! Toimimme luotettavasti sekä jokainen asiakas on meille yksilö, ja siksi räätälöimme palvelumme juuri sinun tarpeisiisi sopivaksi. Ota rohkeasti yhteyttä ja pyydä tarjous!
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -20,9 +20,9 @@ export default function About() {
         </div>
 
         <div className="rounded-xl border bg-white p-5 shadow-sm">
-          <div className="font-semibold">Miksi minä?</div>
+          <div className="font-semibold">Miksi valita meidät?</div>
           <p className="mt-2 text-sm text-slate-700">
-            Työskentelemme nopeasti, luotettavasti ja aina kilpailukykyisellä hinnalla!✨ 
+            Työskentelemme nopeasti, luotettavasti ja aina markkinoiden halvimmalla hinnalla!✨ 
             Ota rohkeasti yhteyttä ja pyydä maksuton arvio!
           </p>
           <a
