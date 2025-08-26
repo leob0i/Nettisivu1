@@ -31,8 +31,10 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   icons: {
-    icon: "/favicon.ico",
-  },
+  icon: "/favicon.ico?v=2",
+  apple: "/apple-touch-icon.png?v=2",
+},
+
   // --- /SEO-lisäykset ---
 };
 
