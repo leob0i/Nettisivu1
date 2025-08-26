@@ -7,7 +7,7 @@ export const SERVICES = [
   },
   {
     title: "Asiakaspalvelubotti",
-    desc: "Tekoälyllä varustettu älykäsasikaspalvelubotti joka toimii 24/7.",
+    desc: "Tekoälyllä varustettu älykäs asikaspalvelubotti joka toimii 24/7.",
     points: ["Toimii 24/7", "Vastaa yritysten tietojen mukaisesti ja kohteliaasti", "Ohjaa tarvittaessa ihmiselle tai toisiin kanaviin", "WhatsAppiin, nettisivulle tai minne vain"],
     img: "/services/chat.jpg",
     href: "/asiakaspalvelubotti",
@@ -15,13 +15,13 @@ export const SERVICES = [
   {
     title: "Some & mainonta",
     desc: "Julkaisut, mainokset ja mittarit samassa paketissa.",
-    points: ["suunnittelu", "ylläpito", "Mainosbibliot", "Sisältökalenterit", "Raportointi"],
+    points: ["suunnittelu", "ylläpito", "Mainokset", "Sisältökalenterit", "Raportointi"],
     img: "/services/some.jpg",
   },
   {
     title: "Puhelinsovellukset",
-    desc: "Iphone ja Androind sovellukset toiveidesi mukaan.",
-    points: ["yrityksille", "asikkaille", "yhteisöille kuten työpaikan sisäinen kommunikointi", "mitä vain!"],
+    desc: "iphone ja Androind sovellukset toiveidesi mukaan.",
+    points: ["yrityksille", "asiakkaille", "yhteisöille kuten työpaikan sisäinen kommunikointi", "mitä vain!"],
     img: "/services/puhelin.jpg",
   },
 ];
@@ -52,7 +52,7 @@ export const PRICING = [
     name: "Asiakaspalvelubotti",
     price: "alk. 790 €",
     period: "kerta",
-    features: ["Ei kuukausimaksuja(OpenAI kk-maksun lisäksi)", "What's up, ohjeistus meta business käyttöönotossa.", "Nettisivulle räätälöity ulkoasu.", "1 ilmainen testikierros."],
+    features: ["Ei kuukausimaksuja(OpenAI kk-maksun lisäksi)", " WhatsApp, ohjeistus meta business käyttöönotossa.", "Nettisivulle räätälöity ulkoasu.", "1 ilmainen testikierros."],
     cta: "Ota yhteyttä ja pyydä tarjous!",
   },
 ];
