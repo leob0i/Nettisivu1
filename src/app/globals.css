@@ -21,11 +21,11 @@ html { scroll-behavior: smooth; }
   box-sizing: border-box;
   padding: 0;
 
-  background-color: #2563eb;
-  background-image: url('/services/chattinappi.png');
+  background-color: transparent;
+  background-image: url('/services/chattinappi2.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 70%;
+  background-size: 110%;
 
   color: transparent;
   border: none;
@@ -36,7 +36,7 @@ html { scroll-behavior: smooth; }
   transition: background-color 0.3s ease;
 }
 #chat-toggle:hover {
-  background-color: #1d4ed8;
+  background-color: transparent;
 }
 
 #chat-box {
