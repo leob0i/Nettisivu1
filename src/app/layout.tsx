@@ -30,11 +30,17 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: ["/logo.png"],
   },
-  icons: {
-  icon: "/favicon.ico?v=2",
-  apple: "/apple-touch-icon.png?v=2",
-},
 
+  // --- FAVICONIT (päivitetty) ---
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: "/apple-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  // --- /FAVICONIT ---
   // --- /SEO-lisäykset ---
 };
 
