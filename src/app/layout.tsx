@@ -5,6 +5,8 @@ import { SITE } from "@/lib/site";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Script from "next/script";
+import { SITE_URL } from "@/lib/env";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +19,14 @@ export const metadata: Metadata = {
     description: SITE.description,
     type: "website",
   },
+  metadataBase: new URL(SITE_URL),
+   alternates: {
+    languages: {
+      fi: "/",
+      en: "/en",
+    },
+  },
+
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

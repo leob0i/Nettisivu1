@@ -5,6 +5,7 @@ import Services from "@/components/services";
 import Pricing from "@/components/pricing";
 import Contact from "@/components/contact";
 import About from "@/components/about";
+import Clients from "@/components/clients";
 
 
 export default function Page() {
@@ -24,6 +25,9 @@ export default function Page() {
       */}
       <Container className="py-12 sm:py-20" id="hinnasto">
         <Pricing />
+      </Container>
+       <Container className="py-12 sm:py-20" id="asiakkaat">
+        <Clients />
       </Container>
       <Container className="py-12 sm:py-20" id="yhteys">
         <Contact />
