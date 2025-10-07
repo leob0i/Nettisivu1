@@ -34,17 +34,17 @@ export const PORTFOLIO = [
 
 export const PRICING = [
   {
-    name: "Nettisivut",
-    price: "alk. 250 €",
+    name: "Pieni nettisivu",
+    price: "249 €",
     period: "kerta",
-    features: ["Räätälöity ulkoasu", "Integraatiot", "SEO", "Julkaisu & opastus"],
+    features: ["1 sivu", "Räätälöity ulkoasu", "Yhteydenotto lomake", "SEO", "Julkaisu & opastus"],
     cta: "Ota yhteyttä ja pyydä tarjous!",
   },
   {
-    name: "Verkkokauppa",
-    price: "alk. 290 €",
+    name: "Keskisuuri tai suuri nettisivu",
+    price: "alk. 399 €",
     period: "kerta",
-    features: ["Monikielisyys", "Laajennettu SEO", "Yhteyslomake", "Perus-analytiikka"],
+    features: ["Kaikki pienen paketin edut", "Monisivuinen / blogi", "Monikielisyys", "Perus-analytiikka", "Laajennettu SEO"],
     cta: "Ota yhteyttä ja pyydä tarjous!",
     featured: true,
   },
@@ -52,9 +52,15 @@ export const PRICING = [
     name: "Asiakaspalvelubotti",
     price: "alk. 790 €",
     period: "kerta",
-    features: ["Ei kuukausimaksuja(OpenAI kk-maksun lisäksi)", "What's up, ohjeistus meta business käyttöönotossa.", "Nettisivulle räätälöity ulkoasu.", "1 ilmainen testikierros."],
+    features: ["Ei kuukausimaksuja(OpenAI kk-maksun lisäksi)", "What's App, ohjeistus meta business käyttöönotossa.", "Nettisivulle räätälöity ulkoasu.", "1 ilmainen testikierros."],
     cta: "Ota yhteyttä ja pyydä tarjous!",
   },
 ];
 
-export const LOGOS = ["Acme", "Peak", "Polar", "Volt", "Panda", "Nova"];
+// src/lib/data.ts
+export type ClientLogo = { name: string; logo: string };
+
+export const LOGOS: ClientLogo[] = [
+  { name: "Rautaranta OY", logo: "/clients/Rautarantalogo.png" },
+  // lisää muita tähän...
+];

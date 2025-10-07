@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { SERVICES } from "@/lib/data";
+import { usePathname } from "next/navigation";
+import { SERVICES_EN } from "@/lib/data.en";
 
 // Paikallinen tyyppi: lisätään optionaalinen href/img
 type Service = (typeof SERVICES)[number] & {
@@ -9,25 +13,38 @@ type Service = (typeof SERVICES)[number] & {
 };
 
 export default function Services() {
-  const cards: Service[] = (SERVICES as Service[]).slice(0, 4); // 2×2
+  const pathname = usePathname() || "/";
+  const isEN = pathname === "/en" || pathname.startsWith("/en/");
+  const DATA = isEN ? SERVICES_EN : SERVICES;
+
+  const cards: Service[] = (DATA as Service[]).slice(0, 4); // nyt DATA on jo määritelty
+
 
   return (
     <div>
-      <h2 className="text-2xl sm:text-3xl font-bold text-center">Palvelut</h2>
-      <p className="mt-2 text-slate-600 max-w-2xl text-center mx-auto">
-        Kaikki mitä tarvitset digitaaliseen edelläkäyntiin ja kasvuun!
-      </p>
+       <h2 className="text-2xl sm:text-3xl font-bold text-center">
+       {isEN ? "Services" : "Palvelut"}
+        </h2>
+       <p className="mt-2 text-slate-600 max-w-2xl text-center mx-auto">
+       {isEN
+        ? "Everything you need for digital edge and growth!"
+       : "Kaikki mitä tarvitset digitaaliseen edelläkäyntiin ja kasvuun!"}
+       </p>
 
       <div className="mt-8 grid gap-8 sm:grid-cols-2">
         {cards.map((s) => {
           // VAIN Asiakaspalvelubotti-korttiin eri teksti
-          const btnLabel =
-            s.title === "Asiakaspalvelubotti" ? "Lue lisää" : "Kysy lisää!";
+          const btnLabel = (() => {
+          const isBot =
+          s.title === "Asiakaspalvelubotti" || s.title === "Customer Service Bot";
+          if (isEN) return isBot ? "Learn more" : "Ask more!";
+          return isBot ? "Lue lisää" : "Kysy lisää!";
+          })();
 
           return (
             <article key={s.title} className="relative overflow-hidden rounded-2xl border shadow-sm">
               {/* Taustakuva */}
-              <div className="relative h-[380px] md:h-[420px]">
+              <div className="relative !h-[280px] md:!h-[320px]">
                 {s.img ? (
                   <Image
                     src={s.img}
@@ -44,8 +61,8 @@ export default function Services() {
                 <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_10%,rgba(124,58,237,0.16),rgba(0,0,0,0))]" />
               </div>
 
-              {/* Tekstit + bulletit + CTA (ankkuroitu alas) */}
-              <div className="pointer-events-none absolute inset-0 flex items=end">
+              {/* Tekstit + bulletit + CTA (ankkuroitu keskelle pystysuunnassa) */}
+              <div className="pointer-events-none absolute inset-0 flex items-center">
                 <div className="m-6 md:m-8 max-w-prose text-white">
                   <h3 className="text-2xl font-semibold drop-shadow-sm">{s.title}</h3>
                   <p className="mt-3 text-white/90">{s.desc}</p>

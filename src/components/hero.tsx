@@ -1,7 +1,16 @@
+"use client";
+
 import Container from "./container";
 import { SITE } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { SITE_EN } from "@/lib/site.en";
+
 
 export default function Hero() {
+    const pathname = usePathname() || "/";
+  const isEN = pathname === "/en" || pathname.startsWith("/en/");
+  const T = isEN ? SITE_EN : SITE;
+
   return (
     <section className="relative overflow-hidden">
       {/* TAUSTAVIDEO */}
@@ -26,21 +35,24 @@ export default function Hero() {
       {/* SISÄLTÖ (→ teksti valkoiseksi) */}
       <Container className="relative z-30 pt-16 sm:pt-24 pb-12 sm:pb-20 text-center text-white">
         <span className="inline-block rounded-full border border-white/60 bg-black/20 px-3 py-1 text-xs">
-          {SITE.tagline}
+          {T.tagline}
+
         </span>
-        <h1 className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight">
-          Tee verkkosivuistasi kasvun moottori
+          <h1 className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight">
+          {isEN ? "Turn your website into a growth engine" : "Tee verkkosivuistasi kasvun moottori"}
         </h1>
-        <p className="mt-4 text-white/85 max-w-2xl mx-auto">
-          Suunnittelemme, toteutamme ja optimoimme sivut, jotka tuovat liidejä ja myyntiä –
-          ilman monimutkaisuutta. Sekä muut digitaaliset ratkaisut!
+           <p className="mt-4 text-white/85 max-w-2xl mx-auto">
+          {isEN
+          ? "We design, build and optimize websites that drive leads and sales — without complexity. Plus other digital solutions!"
+          : "Suunnittelemme, toteutamme ja optimoimme sivut, jotka tuovat liidejä ja myyntiä – ilman monimutkaisuutta. Sekä muut digitaaliset ratkaisut!"}
         </p>
         <div className="mt-8 flex items-center justify-center gap-3">
           <a
             href="#yhteys"
             className="rounded-md px-5 py-2.5 text-white bg-slate-900 hover:bg-slate-800"
           >
-            Pyydä tarjous
+              {isEN ? "Request a quote" : "Pyydä tarjous"}
+
           </a>
         </div>
         <p className="mt-6 text-sm text-white/70">

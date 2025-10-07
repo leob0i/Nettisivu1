@@ -23,7 +23,7 @@ export const SITE: SiteConfig = {
   description:
     "Autamme pk-yrityksiä kasvamaan modernien verkkosivujen, verkkokaupan ja digimainonnan avulla.",
   phone: "",
-  email: "apellleo01@gmail.com",
+  email: "leo@leodigital.fi",
   address: "",
   businessId: "",
   nav: [
@@ -31,6 +31,5 @@ export const SITE: SiteConfig = {
     { label: "Asiakaspalvelurobotti", href: "/asiakaspalvelubotti" }, // ei targetia → aukeaa samassa välilehdessä
     { label: "Meistä", href: "/#meista" },      // tämä on uusi
     { label: "Hinnasto", href: "/#hinnasto" },
-    { label: "Yhteys", href: "/#yhteys" },
   ],
 };

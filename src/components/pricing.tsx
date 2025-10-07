@@ -1,17 +1,45 @@
+"use client";
+
+
+
+
+
 import { PRICING } from "@/lib/data";
+import { usePathname } from "next/navigation";
+import { PRICING_EN } from "@/lib/data.en";
+
+type Plan = (typeof PRICING)[number] & { featured?: boolean };
+
+
 
 function cn(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Pricing() {
+const pathname = usePathname() || "/";
+const isEN = pathname === "/en" || pathname.startsWith("/en/");
+const DATA = isEN ? PRICING_EN : PRICING;
+const plans: Plan[] = DATA as Plan[];
+
+
+
   return (
     <div>
-      <h2 className="text-2xl sm:text-3xl font-bold text-center">Hinnat</h2>
-      <p className="mt-2 text-slate-600 max-w-2xl text-center mx-auto">Verkkosivut ja verkkokaupat voidaan toteuttaa todella halvalla riippuen sivun sisällöstä ja laajuudesta. Mutta yksinkertaisimmillaan hinnat voivat olla todella halpoja!</p>
+      <h2 className="text-2xl sm:text-3xl font-bold text-center">
+      {isEN ? "Pricing" : "Hinnat"}
+      </h2>
+      <p className="mt-2 text-slate-600 max-w-2xl text-center mx-auto">
+        {isEN
+        ? "Clear, affordable packages — tailored to your needs."
+        : "Verkkosivut ja verkkokaupat voidaan toteuttaa todella halvalla riippuen sivun sisällöstä ja laajuudesta. Kaikki paketit räätälöidään asikkaan tarpeiden mukaan. Kaikkiin paketteihin sisältyy 1 ilmainen korjauskierros."}
+      </p>
+
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {PRICING.map((t) => (
+        {plans.map((t) => (
+
+
           <div
             key={t.name}
        className={cn(
@@ -35,7 +63,7 @@ export default function Pricing() {
             <a
               href="#yhteys"
               className={cn(
-                "mt-6 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium",
+                "mt-6 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium !text-white !bg-blue-600 hover:!bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 !border-0",
                 t.featured
                   ? "bg-slate-900 text-white hover:bg-slate-800"
                   : "border border-slate-300 hover:bg-slate-50"
