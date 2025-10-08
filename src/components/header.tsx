@@ -69,11 +69,6 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* FI/EN kytkin (mobiili headerissa) */}
-        <div className="md:hidden mr-2">
-          <LanguageSwitcher />
-        </div>
-
         {/* Mobiilinappi */}
         <button
           onClick={() => setOpen((v) => !v)}
