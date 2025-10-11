@@ -9,7 +9,6 @@ import LanguageSwitcher from "@/components/language-switcher";
 import { usePathname } from "next/navigation";
 import { SITE_EN } from "@/lib/site.en";
 
-
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -17,12 +16,13 @@ export default function Header() {
   const isEN = pathname === "/en" || pathname.startsWith("/en/");
   const T = isEN ? SITE_EN : SITE; // T = nykyinen SITE valitulla kielellä
 
-
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md border-b border-white/10 bg-black/90">
       <Container className="flex h-16 items-center justify-between">
-        <Link 
-           href="/" className="text-2xl sm:text-3xl font-bold tracking-tight whitespace-nowrap leading-none text-white">
+        <Link
+          href="/"
+          className="text-2xl sm:text-3xl font-bold tracking-tight whitespace-nowrap leading-none text-white"
+        >
           <Image
             src="/logo.png"
             alt="Leo Digital logo"
@@ -32,22 +32,24 @@ export default function Header() {
             priority
           />
           <span className="align-middle">{T.brand}</span>
-
         </Link>
 
         {/* Desktop-navigaatio */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {T.nav.map((n) => {
+            // Pakota Meistä/About reitille, vaikka datassa olisi vanha ankkuri
+            const isAbout = n.label === (isEN ? "About" : "Meistä");
+            const resolvedHref = isAbout ? (isEN ? "/en/about" : "/meista") : n.href;
 
             const linkProps =
-  "target" in n && n.target === "_blank"
-    ? ({ target: "_blank" as const, rel: "noopener noreferrer" })
-    : ({});
+              "target" in n && n.target === "_blank"
+                ? ({ target: "_blank" as const, rel: "noopener noreferrer" })
+                : ({});
 
             return (
               <Link
-                key={n.href}
-                href={n.href}
+                key={resolvedHref}
+                href={resolvedHref}
                 {...linkProps}
                 className="text-slate-200 hover:text-white"
               >
@@ -56,11 +58,11 @@ export default function Header() {
             );
           })}
 
-            <a
-             href="#yhteys" className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10"
+          <a
+            href="#yhteys"
+            className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10"
           >
             {isEN ? "Contact" : "Ota yhteyttä"}
-
           </a>
 
           {/* FI/EN kytkin (desktop) */}
@@ -68,11 +70,6 @@ export default function Header() {
             <LanguageSwitcher />
           </div>
         </nav>
-
-        {/* FI/EN kytkin (mobiili headerissa) */}
-        <div className="md:hidden mr-2">
-          <LanguageSwitcher />
-        </div>
 
         {/* Mobiilinappi */}
         <button
@@ -93,26 +90,29 @@ export default function Header() {
               <LanguageSwitcher />
             </div>
 
-            {T.nav.map((n) => (
+            {T.nav.map((n) => {
+              const isAbout = n.label === (isEN ? "About" : "Meistä");
+              const resolvedHref = isAbout ? (isEN ? "/en/about" : "/meista") : n.href;
 
-              <Link
-                key={n.href}
-                href={n.href}
-                target={"target" in n ? n.target : undefined}
-                rel={"target" in n && n.target === "_blank" ? "noopener noreferrer" : undefined}
-                className="py-2 text-slate-100 hover:text-white"
-                onClick={() => setOpen(false)}
-              >
-                {n.label}
-              </Link>
-            ))}
+              return (
+                <Link
+                  key={resolvedHref}
+                  href={resolvedHref}
+                  target={"target" in n ? n.target : undefined}
+                  rel={"target" in n && n.target === "_blank" ? "noopener noreferrer" : undefined}
+                  className="py-2 text-slate-100 hover:text-white"
+                  onClick={() => setOpen(false)}
+                >
+                  {n.label}
+                </Link>
+              );
+            })}
             <a
               href="#yhteys"
               className="mt-2 inline-flex items-center justify-center rounded-md border border-white/20 px-3 py-2 text-sm font-medium text-white hover:bg-white/10"
               onClick={() => setOpen(false)}
             >
-                {isEN ? "Contact" : "Ota yhteyttä"}
-
+              {isEN ? "Contact" : "Ota yhteyttä"}
             </a>
           </Container>
         </div>
