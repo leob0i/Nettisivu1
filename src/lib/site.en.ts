@@ -11,7 +11,7 @@ export const SITE_EN = {
   nav: [
     { label: "Services", href: "#palvelut" },
     { label: "Customer Service Bot", href: "/en/asiakaspalvelubotti" },
-    { label: "About", href: "#meista" },
+    { label: "About", href: "/en/about" },
     { label: "Pricing", href: "#hinnasto" },],
 } as const;
 
