@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -6,8 +7,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Script from "next/script";
 import { SITE_URL } from "@/lib/env";
-
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,36 +19,42 @@ export const metadata: Metadata = {
     type: "website",
   },
   metadataBase: new URL(SITE_URL),
-   alternates: {
-    languages: {
-      fi: "/",
-      en: "/en",
-    },
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
-
+  manifest: "/site.webmanifest",
+  alternates: {
+    languages: { fi: "/", en: "/en" },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fi">
       <body className={`${inter.className} bg-gradient-to-b from-white to-slate-50 text-slate-900`}>
-
         <Header />
         {children}
-        <Footer />{/* CHAT WIDGET – minimirunko */}
-<div id="chat-widget">
-  <button id="chat-toggle" aria-expanded="false">💬</button>
-  <div id="chat-box">
-    <div id="chat-header">Leo Digital botti🤖</div>
-    <div id="chat-messages"></div>
-    <div id="chat-input-area">
-      <input id="chat-input" placeholder="Kirjoita viesti…" />
-      <button id="send-chat">Lähetä</button>
-    </div>
-  </div>
-</div>
+        <Footer />
 
-<Script src="/chat.js" strategy="afterInteractive" />
+        {/* CHAT WIDGET – minimirunko */}
+        <div id="chat-widget">
+          <button id="chat-toggle" aria-expanded="false">💬</button>
+          <div id="chat-box">
+            <div id="chat-header">Leo Digital botti🤖</div>
+            <div id="chat-messages"></div>
+            <div id="chat-input-area">
+              <input id="chat-input" placeholder="Kirjoita viesti…" />
+              <button id="send-chat">Lähetä</button>
+            </div>
+          </div>
+        </div>
+
+        {/* Lataa public/chat.js */}
+        <Script src="/chat.js" strategy="afterInteractive" />
       </body>
     </html>
   );
