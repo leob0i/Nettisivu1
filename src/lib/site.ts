@@ -15,6 +15,7 @@ export type SiteConfig = {
   address: string;
   businessId: string;
   nav: NavItem[];
+  INSTAGRAM_URL?: string; // <-- lisätty
 };
 
 export const SITE: SiteConfig = {
@@ -29,7 +30,8 @@ export const SITE: SiteConfig = {
   nav: [
     { label: "Palvelut", href: "/#palvelut" },
     { label: "Asiakaspalvelurobotti", href: "/asiakaspalvelubotti" }, // ei targetia → aukeaa samassa välilehdessä
-    { label: "Meistä", href: "/#meista" },      // tämä on uusi
+    { label: "Meistä", href: "/meista" },      // tämä on uusi
     { label: "Hinnasto", href: "/#hinnasto" },
   ],
+  INSTAGRAM_URL: "https://www.instagram.com/leodigital.fi/", // <-- lisätty
 };
