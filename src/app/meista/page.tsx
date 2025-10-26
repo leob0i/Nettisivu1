@@ -96,14 +96,6 @@ export default function MeistaPage() {
         Palaamme pikaisesti ja toimitamme sinulle selkeän ehdotuksen aikatauluineen ja hintoineen.
       </p>
     </div>
-
-<section id="privacy">
-  <h2>Tietosuojakäytäntö</h2>
-  <p>Päivitetty: 26.10.2025</p>
-  <p>Keräämme lomakkeella nimen, sähköpostin ja puhelinnumeron tarjouksen tekemistä ja yhteydenpitoa varten. Emme myy tai luovuta tietoja kolmansille osapuolille. Säilytämme tiedot enintään 12 kk tai kunnes pyydät poistamista.</p>
-  <p>Oikeutesi: tarkastaa, oikaista ja pyytää poistamista. Yhteys: leo@leodigital.fi • WhatsApp +358 452031377.</p>
-</section>
-
     
    <div className="mt-8 text-center">
   <Link
