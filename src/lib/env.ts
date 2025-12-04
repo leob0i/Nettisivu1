@@ -21,6 +21,7 @@ export const env = {
   BOT_BASE_URL: process.env.BOT_BASE_URL!, // ← tämä lisäys
 } as const;
 
+
 // --- SEO helpers (ei pakollisia) ---
 export const SITE_URL =
   (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/+$/, "");

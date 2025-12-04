@@ -33,21 +33,35 @@ export const PORTFOLIO = [
 ];
 
 export const PRICING = [
-  {
-    name: "Pieni nettisivu",
-    price: "249 €",
-    period: "kerta",
-    features: ["1 sivu", "Räätälöity ulkoasu", "Yhteydenotto lomake", "SEO", "Julkaisu & opastus"],
-    cta: "Ota yhteyttä ja pyydä tarjous!",
-  },
-  {
-    name: "Keskisuuri tai suuri nettisivu",
-    price: "alk. 399 €",
-    period: "kerta",
-    features: ["Kaikki pienen paketin edut", "Monisivuinen / blogi", "Monikielisyys", "Perus-analytiikka", "Laajennettu SEO"],
-    cta: "Ota yhteyttä ja pyydä tarjous!",
-    featured: true,
-  },
+{
+  name: "Nettisivu – starttipaketti",
+  price: "299 €",
+  period: "kerta",
+  features: [
+    "1–3 selkeää sivua (esim. etusivu, palvelut, yhteystiedot)",
+    "Räätälöity ulkoasu yrityksesi ilmeen mukaan",
+    "Yhteydenottolomake, joka ohjaa viestit suoraan sähköpostiisi",
+    "Perus-SEO: otsikot, metakuvaukset ja selkeä sivurakenne",
+    "Julkaisu & lyhyt opastus sivujen käyttöön",
+    "Lisäkieli (esim. englanti) alk. 20 €/sivu"
+  ],
+  cta: "Ota yhteyttä ja pyydä tarkka tarjous",
+},
+{
+  name: "Keskisuuri tai suuri nettisivu",
+  price: "alk. 399 €",
+  period: "kerta",
+  features: [
+    "Kaikki starttipaketin edut",
+    "5+ sivua – lisäsivut alk. 49 €/sivu",
+    "Selkeä sivurakenne useammalle palvelulle tai toimipisteelle",
+    "Laajennettu SEO ja perusanalytiikka (esim. Google Analytics)",
+    "Lisäkieli (esim. englanti) alk. 20 €/sivu",
+  ],
+  cta: "Ota yhteyttä ja pyydä tarkka tarjous",
+  featured: true,
+},
+
   {
     name: "Asiakaspalvelubotti",
     price: "alk. 790 €",

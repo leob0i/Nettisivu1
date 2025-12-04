@@ -34,10 +34,12 @@ export default function Pricing() {
         {isEN ? "Pricing" : "Hinnat"}
       </h2>
       <p className="mt-2 text-slate-600 max-w-2xl text-center mx-auto">
-        {isEN
-          ? "Clear, affordable packages — tailored to your needs."
-          : "Verkkosivut ja verkkokaupat voidaan toteuttaa todella halvalla riippuen sivun sisällöstä ja laajuudesta. Kaikki paketit räätälöidään asikkaan tarpeiden mukaan. Kaikkiin paketteihin sisältyy 1 ilmainen korjauskierros."}
-      </p>
+  {isEN
+    ? "Websites and customer service bots are always priced based on the scope and content. The prices below are typical starting points for small and medium-sized businesses, and include one free revision round."
+    : "Verkkosivut ja asiakaspalvelubotit hinnoitellaan aina sivujen laajuuden ja sisällön mukaan. Alla olevat hinnat ovat tyypillisiä alkaen-esimerkkejä pienille ja keskisuurille yrityksille. Kaikkiin paketteihin sisältyy yksi maksuton korjauskierros."}
+</p>
+
+
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {plans.map((t) => {
@@ -77,6 +79,7 @@ export default function Pricing() {
                 </div>
               </div>
 
+
               <ul className="mt-4 space-y-1 text-sm text-slate-700 list-disc list-inside">
                 {t.features.map((f) => (
                   <li key={f}>{f}</li>
@@ -98,6 +101,13 @@ export default function Pricing() {
           );
         })}
       </div>
+<p className="mt-4 text-sm text-slate-500 text-center max-w-2xl mx-auto">
+  {isEN
+    ? "All projects are priced case-by-case, and larger scopes are always quoted separately. Tell me briefly what you need and we’ll find a fair package and clear pricing for both sides."
+    : "Kaikki työt toteutetaan tapauskohtaisesti, ja isommat kokonaisuudet hinnoitellaan aina erikseen. Kerro lyhyesti tarpeistasi, niin räätälöidään molemmille fiksu kokonaisuus ja selkeä hinta."}
+</p>
+
+
     </div>
   );
 }

@@ -20,7 +20,7 @@ export type SiteConfig = {
 
 export const SITE: SiteConfig = {
   brand: "Leo Digital",
-  tagline: "Kaikki digitaaliset palvelut helposti ja fiksusti!",
+  tagline: "",
   description:
     "Autamme pk-yrityksiä kasvamaan modernien verkkosivujen, verkkokaupan ja digimainonnan avulla.",
   phone: "",

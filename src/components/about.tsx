@@ -1,55 +1,121 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// src/components/about.tsx
 export default function About() {
   const pathname = usePathname() || "/";
   const isEN = pathname === "/en" || pathname.startsWith("/en/");
 
-
   return (
-    <div>
-         <h2 className="text-2xl sm:text-3xl font-bold text-center">
-        {isEN ? "About us" : "Meistä"}
-        </h2>
-        <p className="mt-2 text-slate-600 max-w-2xl mx-auto text-center">
-        {isEN
-        ? "We are a modern, agile team building customer service bots, websites, mobile apps—anything you need—with results and clarity first. We work reliably and tailor every project to your needs. Get in touch and ask for a quote!"
-        : "Olemme uusi ja nuorekas yritys joka suunnittelee ja toteuttaa asiakaspalvelubotteja, verkkosivuja, mobiilisovelluksia tai mitä vain ketterästi, tulokset ja selkeys edellä! Toimimme luotettavasti sekä jokainen asikas on meille yksilö, ja siksi räätälöimme palvelumme juuri sinun tarpeisiisi sopivaksi. Ota rohkeasti yhteyttä ja pyydä tarjous!"}
-      </p>
+    <section className="space-y-10">
+      {/* Yläosa: kuva + esittelyteksti */}
+      <div className="flex flex-col gap-6 md:flex-row md:items-center">
+        {/* Profiilikuva */}
+        <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-slate-200 bg-slate-100 md:h-28 md:w-28 mx-auto md:mx-0">
+          <Image
+            src="/leo-profile.jpg" // vaihda jos eri nimi/polku
+            alt={
+              isEN
+                ? "Leo Apell, founder of Leo Digital."
+                : "Leo Apell, Leo Digitalin perustaja."
+            }
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border bg-white p-5 shadow-sm">
-              <div className="font-semibold">
-              {isEN ? "How we work" : "Miten työskentelemme?"}
-              </div>
-          <ul className="mt-2 list-disc list-inside text-sm text-slate-700 space-y-1">
-            <li>{isEN ? "💬 First, we go through your needs and goals" : "💬 Aluksi käymme läpi tarpeesi ja toiveesi"}</li>
-            <li>{isEN ? "🛠 We propose a technical approach and plan" : "🛠 Suunnittelemme ja esittelemme ehdotuksen teknisestä toteutuksesta"}</li>
-            <li>{isEN ? "🚀 We start building and keep you in the loop—sharing and welcoming ideas" : "🚀 Aloitamme kehityksen ja pidämme sinut ajan tasalla, ehdotamme ja vastaanotamme ideoita!"}</li>
-            <li>{isEN ? "✅ You get an affordable, turnkey solution. We can also agree on ongoing improvements, maintenance and add-ons—fully flexible to your needs." : "✅ Lopuksi saat valmiin ratkaisun edullisesti ja avaimet käteen -periaatteella! Tarvittaessa voidaan sopia myös jatkokehityksestä, ylläpidosta ja lisätoiminnoista, täysin joustavasti tarpeidesi mukaan!"}</li>
+        {/* Tekstit */}
+        <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">
+            {isEN ? "Leo Digital · About" : "Leo Digital · Meistä"}
+          </p>
+
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {isEN
+              ? "Hi, I’m Leo Apell – the person behind the websites and bots"
+              : "Hei, olen Leo Apell – tekijä sivujen ja bottien taustalla"}
+          </h2>
+
+          <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
+            {isEN
+              ? "I help small and medium-sized businesses get more out of their digital channels – without unnecessary complexity. I design and build websites, customer service bots and other digital solutions from start to finish myself, so communication stays direct and clear."
+              : "Autan pieniä ja keskisuuria yrityksiä saamaan enemmän irti digitaalisista kanavista – ilman turhaa monimutkaisuutta. Suunnittelen ja toteutan verkkosivuja, asiakaspalvelubotteja ja muuta digitaalista tekemistä alusta loppuun itse, jotta kommunikaatio pysyy suorana ja selkeänä."}
+          </p>
+
+          <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
+            {isEN
+              ? "I enjoy challenges and projects where I can bring my creativity to the screen, especially when creating visually striking complete experiences."
+              : "Tykkään haasteista ja projekteista, joissa saan tuoda luovuuteni ruudulle, erityisesti näyttävien kokonaisuusksien toteutuksessa."}
+          </p>
+        </div>
+      </div>
+
+      {/* Keskiosa: Miten työskentelen + Miksi juuri minä */}
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
+          <h3 className="mb-3 text-sm font-semibold text-slate-900 sm:text-base">
+            {isEN ? "How I work" : "Miten työskentelen"}
+          </h3>
+          <ul className="space-y-1.5 text-sm text-slate-700">
+            <li>
+              {isEN
+                ? "• First, a short chat about your goals and current situation"
+                : "• Aluksi lyhyt keskustelu tavoitteista ja nykytilanteesta"}
+            </li>
+            <li>
+              {isEN
+                ? "• I propose a clear solution and price upfront"
+                : "• Ehdotan selkeän ratkaisun ja hinnan etukäteen"}
+            </li>
+            <li>
+              {isEN
+                ? "• I build the project step by step and keep you updated"
+                : "• Toteutan projektin vaiheittain ja pidän sinut ajan tasalla"}
+            </li>
+            <li>
+              {isEN
+                ? "• Finally, launch, basic guidance and the option for further development"
+                : "• Lopuksi julkaisu, perusopastus ja mahdollisuus jatkokehitykseen"}
+            </li>
           </ul>
         </div>
 
-        <div className="rounded-xl border bg-white p-5 shadow-sm">
-            <div className="font-semibold">
-            {isEN ? "Why me?" : "Miksi minä?"}
-            </div>
-          <p className="mt-2 text-sm text-slate-700">
-               {isEN
-              ? "We work fast, reliably, and always at a competitive price! ✨ Feel free to reach out for a free estimate."
-              : "Työskentelemme nopeasti, luotettavasti ja aina kilpailukykyisellä hinnalla!✨ Ota rohkeasti yhteyttä ja pyydä maksuton arvio!"}
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 sm:p-6 space-y-3">
+          <h3 className="text-sm font-semibold text-slate-900 sm:text-base">
+            {isEN ? "Why work with me?" : "Miksi juuri minä?"}
+          </h3>
+          <p className="text-sm text-slate-700">
+            {isEN
+              ? "Every solution I build is as practical as possible, easy to maintain and genuinely useful! …And it also looks great!"
+              : "Jokainen ratkaisuni on mahdollisimman käytännönläheinen, helppo ylläpitää ja tuo oikeasti hyötyä! ...Ja myös näyttävä!"}
           </p>
-          <a
-            href="#yhteys"
-            className="mt-4 inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-white hover:bg-slate-800"
-          >
-            {isEN ? "Get a free estimate!" : "Pyydä maksuton arvio!"}
-          </a>
-          <p className="mt-2 text-xs text-slate-500"> {isEN ? "I usually reply the same day." : "Vastaan yleensä saman päivän aikana."}</p>
+          <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
+            <span className="rounded-full bg-sky-100 px-3 py-1 text-sky-700">
+              {isEN
+                ? "Every project is unique and a well-functioning whole."
+                : "Jokainen projekti on omansa ja hyvin toimiva kokonaisuus."}
+            </span>
+            <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">
+              {isEN
+                ? "Payment 50% upfront and 50% on delivery."
+                : "Maksu 50% ja 50% loput luovutuksen yhteydessä."}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Alalaita: CTA-napit */}
+      <div className="flex flex-wrap gap-3">
+        <Link
+          href="#yhteys"
+          className="inline-flex items-center justify-center rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500"
+        >
+          {isEN ? "Request a free quote" : "Pyydä maksuton arvio"}
+        </Link>
+      </div>
+    </section>
   );
 }

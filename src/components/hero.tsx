@@ -34,18 +34,19 @@ export default function Hero() {
 
       {/* SISÄLTÖ (→ teksti valkoiseksi) */}
       <Container className="relative z-30 pt-16 sm:pt-24 pb-12 sm:pb-20 text-center text-white">
-        <span className="inline-block rounded-full border border-white/60 bg-black/20 px-3 py-1 text-xs">
-          {T.tagline}
+        
+         <h1 className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight">
+  {isEN
+    ? "Turn your website and customer service into a growth engine"
+    : "Tee verkkosivuista ja asiakaspalvelusta yrityksesi kasvun moottori"}
+</h1>
 
-        </span>
-          <h1 className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight">
-          {isEN ? "Turn your website into a growth engine" : "Tee verkkosivuistasi kasvun moottori"}
-        </h1>
            <p className="mt-4 text-white/85 max-w-2xl mx-auto">
-          {isEN
-          ? "We design, build and optimize websites that drive leads and sales — without complexity. Plus other digital solutions!"
-          : "Suunnittelemme, toteutamme ja optimoimme sivut, jotka tuovat liidejä ja myyntiä – ilman monimutkaisuutta. Sekä muut digitaaliset ratkaisut!"}
-        </p>
+  {isEN
+    ? "I design and build modern websites and smart customer service bots that bring real enquiries — without unnecessary complexity."
+    : "Suunnittelen ja toteutan moderneja verkkosivuja sekä älykkäitä asiakaspalvelubotteja, jotka tuovat oikeita yhteydenottoja – ilman turhaa monimutkaisuutta."}
+</p>
+
         <div className="mt-8 flex items-center justify-center gap-3">
           <a
             href="#yhteys"

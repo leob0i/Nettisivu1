@@ -17,19 +17,22 @@ export default function Services() {
   const isEN = pathname === "/en" || pathname.startsWith("/en/");
   const DATA = isEN ? SERVICES_EN : SERVICES;
 
-  const cards: Service[] = (DATA as Service[]).slice(0, 4); // nyt DATA on jo määritelty
+const cards: Service[] = (DATA as Service[]).slice(0, 2);
+
 
 
   return (
     <div>
        <h2 className="text-2xl sm:text-3xl font-bold text-center">
-       {isEN ? "Services" : "Palvelut"}
-        </h2>
+  {isEN ? "Websites & customer service bots" : "Verkkosivut ja asiakaspalvelubotit"}
+</h2>
+
        <p className="mt-2 text-slate-600 max-w-2xl text-center mx-auto">
-       {isEN
-        ? "Everything you need for digital edge and growth!"
-       : "Kaikki mitä tarvitset digitaaliseen edelläkäyntiin ja kasvuun!"}
-       </p>
+  {isEN
+    ? "I focus on two things: modern websites and smart customer service bots that bring real enquiries."
+    : "Keskityn kahteen asiaan: moderneihin verkkosivuihin ja älykkäisiin asiakaspalvelubotteihin, jotka tuovat oikeita yhteydenottoja."}
+</p>
+
 
       <div className="mt-8 grid gap-8 sm:grid-cols-2">
         {cards.map((s) => {

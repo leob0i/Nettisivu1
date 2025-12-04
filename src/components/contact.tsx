@@ -38,8 +38,8 @@ export default function Contact() {
         <h2 className="text-2xl sm:text-3xl font-bold">{isEN ? "Contact" : "Ota yhteyttä"}</h2>
             <p className="mt-2 text-slate-600">
           {isEN
-          ? "Tell us your goals — we’ll propose a solution and price with no strings attached. All work at reference pricing, -50% until the end of October!"
-          : "Kerro tavoitteistasi – ehdotamme ratkaisun ja hinnan ilman sitoumusta. Kaikki työt refrenssihintaan -50% lokakuun loppuun asti!"}
+          ? "Tell us your goals — we’ll propose a solution and price with no strings attached. "
+          : "Kerro tavoitteistasi – ehdotamme ratkaisun ja hinnan ilman sitoumusta."}
          </p>
         <ul className="mt-6 space-y-2 text-sm">
           {SITE.phone && <li>📞 {SITE.phone}</li>}

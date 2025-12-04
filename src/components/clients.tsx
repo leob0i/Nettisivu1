@@ -17,20 +17,22 @@ export default function Clients() {
   return (
     <section aria-labelledby="clients-heading" className="py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="space-y-3 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">
-              {isEN ? "Clients" : "Asiakkaat"}
-              </p>
+       <div className="space-y-3 text-center">
+  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">
+    {isEN ? "Clients" : "Asiakkaat"}
+  </p>
 
-              <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">
-              {isEN ? "Companies that trust my work" : "Yritykset, jotka luottavat osaamiseeni"}
-            </h2>
-            <p className="mx-auto max-w-2xl text-base text-slate-600">
-            {isEN
-            ? "I have designed and delivered solutions for the following organizations. The logos represent projects and long-term partnerships."
-            : "Olen suunnitellut ja toteuttanut ratkaisuja seuraaville organisaatioille. Logot kertovat toteutetuista projekteista ja pitkäaikaisista kumppanuuksista."}
-          </p>
-        </div>
+  <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">
+    {isEN ? "Companies that trust my work" : "Yritykset, jotka luottavat osaamiseeni"}
+  </h2>
+
+  <p className="mx-auto max-w-2xl text-base text-slate-600">
+    {isEN
+      ? "I have designed and delivered solutions for the following organizations. The logos represent projects and long-term partnerships."
+      : "Olen suunnitellut ja toteuttanut ratkaisuja seuraaville organisaatioille. Logot kertovat toteutetuista projekteista ja pitkäaikaisista kumppanuuksista."}
+  </p>
+</div>
+
 
        {/* Jos vain yksi logo → iso ja keskelle, ilman korttipalkkia */}
 {LOGOS.length === 1 ? (
