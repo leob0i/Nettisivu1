@@ -127,26 +127,24 @@ export default function MeistaPage() {
               päivittää sisältöjä tai laajentaa sivustoa.
             </p>
 
-            <h2 className="font-semibold">Seuraava askel</h2>
-            <p>
-              Jos haluat nopean arvion, kerro lyhyesti mitä olet vailla – 
-              esimerkiksi millainen yritys sinulla on, mitä sivulta pitäisi
-              löytyä ja onko tarvetta myös asiakaspalvelubotille. Palaan
-              mahdollisimman pian selkeän ehdotuksen, karkean aikataulun ja
-              hintahaarukan kanssa.
-            </p>
-          </div>
+      <h2 className="font-semibold">Seuraava askel</h2>
+      <p>
+        Jos haluat nopean arvion ja mallinäkymän, lähetä viesti sivun lomakkeella tai WhatsAppissa.
+        Palaamme pikaisesti ja toimitamme sinulle selkeän ehdotuksen aikatauluineen ja hintoineen.
+      </p>
+    </div>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/#yhteys"
-              className="inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-white hover:bg-slate-800"
-            >
-              Pyydä nopea arvio
-            </Link>
-          </div>
-        </Container>
-      </section>
+   <div className="mt-8 text-center">
+  <Link
+    href="/#yhteys"
+    className="inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-white hover:bg-slate-800"
+  >
+    Pyydä nopea arvio
+  </Link>
+</div>
+  </Container>
+</section>
+
     </main>
   );
 }
