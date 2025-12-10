@@ -1,249 +1,614 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Container from "@/components/container";
 import Image from "next/image";
+import Container from "@/components/container";
 
 
 export const metadata: Metadata = {
-  title: "Asiakaspalvelubotti – LeoDigital",
+  title: "Asiakaspalvelubotti – Leo Digital",
   description:
-    "Älykäs asiakaspalvelubotti, joka vastaa 24/7, vähentää tukikuormaa ja kasvattaa liidejä.",
+    "Älykäs asiakaspalvelubotti WhatsAppiin ja verkkosivulle. Hinnoittelu aloitusmaksu + kuukausimaksu: Start 590 € + 89 €/kk, Kasvu 1 100 € + 189 €/kk, Pro 2 200 € + 350 €/kk. WhatsApp Coexistence saatavilla lisäosana.",
 };
+
+const badges = [
+  "WhatsApp tai verkkosivu",
+  "2 viikon ilmainen testijakso",
+];
+
+const highlights = [
+  {
+    title: "Vastaa 24/7",
+    text:
+      "Asiakkaat saavat vastaukset heti – myös iltaisin ja viikonloppuisin.",
+  },
+  {
+    title: "Vähemmän toistoa",
+    text:
+      "Botti hoitaa yleisimmät kysymykset, joten sinä keskityt tärkeimpiin tapauksiin.",
+  },
+  {
+    title: "Kuulostaa brändiltäsi",
+    text:
+      "Sävy, kieli ja rajaukset rakennetaan yrityksesi tyylin mukaan.",
+  },
+];
+
+const features = [
+  {
+    title: "FAQ ensin, tekoäly tukena",
+    text:
+      "Botti vastaa ensisijaisesti yrityksesi omiin tietoihin pohjautuen ja käyttää tekoälyä vain täydentämään ja muotoilemaan vastauksen selkeäksi.",
+  },
+  {
+    title: "Ymmärtää oikeaa kieltä",
+    text:
+      "Kirjoitusvirheet, puhekieli, murteet ja lyhyet kysymykset eivät kaada keskustelua.",
+  },
+  {
+    title: "Ohjaa ihmiselle fiksusti",
+    text:
+      "Kun tilanne on epäselvä tai vaatii henkilökohtaista käsittelyä, botti ohjaa asiakkaan oikeaan kanavaan.",
+  },
+  {
+    title: "Monikielinen tarvittaessa",
+    text:
+      "Voimme määrittää botin tunnistamaan asiakkaan kielen ja vastaamaan sujuvasti usealla kielellä.",
+  },
+];
+
+const coexistenceHowItWorks = {
+  title: "WhatsApp Coexistence -toimintamalli käytännössä",
+  text:
+    "Kun haluat, että botti ja ihminen palvelevat samalla WhatsApp-numerolla, voidaan ottaa käyttöön Coexistence-malli. Botti vastaa automaattisesti sovittuina aikoina ja ohjautuu pois keskustelusta, jos se ei ole riittävän varma vastauksesta tai jos ihminen ottaa keskustelun haltuun. Tarvittaessa botti voi ottaa keskustelun takaisin haltuun sovitun ajan jälkeen. Tämä mahdollistaa sujuvan asiakaspalvelun ilman numeron vaihtamista tai asiakaspalvelun siirtämistä toiseen kanavaan.",
+};
+
+const useCases = [
+  "Matkailu & aktiviteetit",
+  "Palveluyritykset",
+  "Verkkokaupat",
+  "Autokoulut",
+  "Paikalliset kuluttajapalvelut",
+  "B2B-palvelut",
+];
+
+const exampleQs = [
+  "Paljonko tämä maksaa?",
+  "Milloin on vapaita aikoja?",
+  "Miten varaus / peruutus toimii?",
+  "Missä tapaaminen on?",
+  "Kuinka nopeasti toimitatte?",
+  "Miten saan yhteyden asiakaspalveluun?",
+];
+
+const steps = [
+  {
+    step: "1",
+    title: "Kartoitus",
+    text:
+      "Käydään läpi yrityksesi yleisimmät asiakaskysymykset, kanavat ja tavoiteltu sävy.",
+  },
+  {
+    step: "2",
+    title: "Tietopohja & logiikka",
+    text:
+      "Rakennan botin vastaamaan yrityksesi omien tietojen pohjalta ja määritän rajaukset.",
+  },
+  {
+    step: "3",
+    title: "Integraatio",
+    text:
+      "WhatsApp Business API tai verkkosivuchat – tai molemmat – käyttöönotto valmiiksi.",
+  },
+  {
+    step: "4",
+    title: "Julkaisu & opastus",
+    text:
+      "Opastus botin käyttöön, jatkuva kehitys ja ylläpito. ",
+  },
+];
+
+const included = [
+  "Botin suunnittelu ja toteutus (Node.js + OpenAI)",
+  "FAQ-vastauslogiikka + älykäs fallback",
+  "Kanavaintegraatio valitun paketin mukaan",
+  "Verkkosivuchatin ulkoasun räätälöinti brändiin",
+  "Meta Business Manager -prosessin avustus (WhatsApp)",
+  "Ohjeet ja käyttöönotto",
+  "Toimitus omalle serverille tai kehityspalvelimelle",
+  "1 testikierros + viimeistely",
+];
+
+const pricingTiers = [
+  {
+    name: "Start",
+    badge: "Helppo aloitus",
+    setup: "590 €",
+    monthly: "89 € / kk",
+    summary: "1 kanava, perus-FAQ ja kevyt ylläpito",
+    bullets: [
+      "1 kanava (WhatsApp tai verkkosivu)",
+      "Perus-FAQ + rajaukset",
+      "Brändin mukainen sävy",
+      "Kevyt ylläpito ja sisällön päivitykset",
+    ],
+  },
+  {
+    name: "Kasvu",
+    badge: "Suosittu valinta",
+    setup: "1 100 €",
+    monthly: "89 € / kk",
+    summary: "2 kanavaa, laajempi räätälöinti ja ylläpito",
+    bullets: [
+      "2 kanavaa (WhatsApp + verkkosivu)",
+      "Laajempi tietopohja",
+      "Tarkemmat käyttösäännöt",
+      "Säännöllisempi ylläpito",
+    ],
+  },
+  {
+    name: "Pro",
+    badge: "Vaativaan käyttöön",
+    setup: "1990 €",
+    monthly: "199 € / kk",
+    summary: "Monikanava, laajemmat ominaisuudet ja prioriteettituki",
+    bullets: [
+      "Monikanavainen kokonaisuus",
+      "Laajemmat ominaisuudet",
+      "Prioriteettituki",
+      "Sovittavissa integraatioita",
+    ],
+  },
+];
+
+const addons = [
+  {
+    name: "WhatsApp Coexistence -lisäosa",
+    setup: "+ 390 €",
+    monthly: "+ 49 € / kk",
+    summary:
+      "Sama numero ihmiselle ja botille, AUTO/HUMAN-tilat, työaikalogiikka ja turvallinen siirto ihmiselle.",
+    bullets: [
+      "Ihminen ja botti samalla numerolla",
+      "AUTO/HUMAN-tilat",
+      "Työaikalogiikka",
+      "Siirto ihmiselle kun botti ei ole varma",
+      "Keskustelun takaisinotto sovitun viiveen jälkeen",
+    ],
+  },
+];
+
+const faq = [
+  {
+    q: "Onko tämä perinteinen nappibotti?",
+    a:
+      "Ei. Tämä on moderni tekoälyä hyödyntävä botti, joka vastaa luonnollisesti ja hyödyntää yrityksesi omaa tietopohjaa.",
+  },
+  {
+    q: "Voiko botin äänensävyä muokata?",
+    a:
+      "Kyllä. Rakennamme botin viestintätyylin brändisi mukaiseksi – rento, asiallinen tai myyvä.",
+  },
+  {
+    q: "Mitä jos botti ei ole varma vastauksesta?",
+    a:
+      "Silloin se ohjaa asiakkaan ihmiselle tai oikeaan kanavaan. Tarkoitus on minimoida arvailu.",
+  },
+  {
+    q: "Toimiiko tämä myös verkkosivulla?",
+    a:
+      "Kyllä. Botti voidaan toteuttaa verkkosivulle, WhatsAppiin tai molempiin paketin mukaan.",
+  },
+  
+];
 
 export default function Page() {
   return (
-    <main className="pb-20">
-      {/* Hero – jätetään selkeä border-b */}
-      <section id="hero" className="relative overflow-hidden border-b scroll-mt-24">
-  {/* Taustakuva koko alueelle – EI overlayta */}
-  <Image
-    src="/services/asiakaspalvelubotti-hero.jpg"
-    alt=""
-    fill
-    priority
-    aria-hidden="true"
-    className="absolute inset-0 -z-10 object-cover object-center pointer-events-none"
-  />
+    <main className="relative min-h-screen pb-20 overflow-hidden bg-slate-50">
+      {/* HERO */}
+      <section id="hero" className="relative scroll-mt-24">
+        {/* HERON TAUSTAKUVA */}
+        <Image
+          src="/services/asiakaspalvelubotti-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          aria-hidden="true"
+          className="
+            absolute inset-0 -z-0
+            object-cover object-center
+            pointer-events-none select-none
+          "
+        />
 
-  <Container className="py-16 min-h-[60vh] flex flex-col items-center justify-center text-center text-white">
+        {/* TUMMA OVERLAY – jotta kuva näkyy paremmin ja kontrasti paranee */}
+        <div
+          aria-hidden="true"
+          className="
+            absolute inset-0 -z-10
+            bg-gradient-to-b
+            from-slate-950/90 via-slate-950/70 to-slate-950/50
+            pointer-events-none
+          "
+        />
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold">🤖 Älykäs asiakaspalvelubotti</h1>
-          <p className="mt-2 text-lg font-semibold">Avaimet käteen -ratkaisuna yrityksellesi!</p>
-          <p className="mt-3 text-white/90 max-w-2xl">
-            Tarjoamme yrityksellesi modernin asiakaspalvelubotin, joka toimii WhatsAppissa tai
-            verkkosivullanne, juuri teidän tarpeisiinne räätälöitynä! Ja varmasti markkinoiden halvimmalla hinnalla!
-          </p>
-          <p className="mt-4 text-white/90 max-w-3xl">
-            Tämä ei ole perinteinen “tarkoititko tätä?” -tyylinen botti, vaan aidosti älykäs,
-            tekoälyyn pohjautuva keskustelija, joka ymmärtää kirjoitusvirheitä, murteita, slangia ja
-            monimutkaisia kysymyksiä. Voit jutella Leo Digital bottimme kanssa oikeassa alareunassa sijaitsevassa chat- painikkeesta. 
-          </p>
+        <Container className="relative z-20 py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 items-center">
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {badges.map((b) => (
+                  <span
+                    key={b}
+                    className="rounded-full border border-sky-200 bg-white px-3 py-1 text-[10px] sm:text-xs font-semibold text-sky-700 shadow-sm"
 
-          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/#yhteys"
-              className="rounded-md px-5 py-2.5 text-white bg-slate-900 hover:bg-slate-800 text-center"
-            >
-              Pyydä demo
-            </Link>
-            <Link
-              href="#miten"
-              className="rounded-md px-5 py-2.5 border border-slate-300 hover:bg-white text-center"
-            >
-              Katso ominaisuudet
-            </Link>
+                  >
+                    {b}
+                  </span>
+                ))}
+              </div>
+
+            <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-sm">
+  Asiakaspalvelubotti, joka vastaa 24/7{" "}
+  <span className="text-sky-200">
+    yrityksesi omilla tiedoilla
+  </span>
+</h1>
+
+<p className="mt-4 text-lg text-slate-100/90 max-w-xl drop-shadow-sm">
+  Moderni WhatsApp- ja verkkosivubotti, joka vähentää toistuvaa
+  asiakaspalvelutyötä, parantaa vastausnopeutta ja näyttää
+  yrityksesi yhtä ammattimaiselta kuin parhaat isot brändit.
+</p>
+
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/#yhteys"
+                  className="rounded-lg px-5 py-3 text-white bg-sky-900 hover:bg-sky-800 text-center font-semibold shadow"
+                >
+                  Pyydä demo
+                </Link>
+                <Link
+                  href="#hinnoittelu"
+                  className="rounded-lg px-5 py-3 border border-sky-300 hover:bg-white text-sky-900 text-center font-semibold"
+                >
+                  Katso hinnoittelu
+                </Link>
+              </div>
+
+              <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-sky-200 bg-white px-4 py-3 shadow-sm">
+                <div className="text-sm text-sky-700">Aloitus + kuukausi</div>
+                <div className="text-lg font-extrabold text-sky-950">
+                  590 € + 89 € / kk
+                </div>
+                <div className="text-xs text-sky-600">
+                  Start-paketti
+                </div>
+              </div>
+            </div>
+
+            {/* Oikea puoli: "glass" hyötykortit */}
+            <div className="grid gap-4">
+              {highlights.map((h) => (
+                <div
+                  key={h.title}
+                  className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
+                >
+                  <div className="text-lg font-bold text-sky-950">{h.title}</div>
+                  <p className="mt-2 text-slate-700">{h.text}</p>
+                </div>
+              ))}
+
+              <div className="rounded-2xl border border-sky-200 bg-sky-950 p-6 text-white shadow-sm">
+                <div className="text-sm opacity-80">Tuki</div>
+                <div className="mt-1 text-xl font-bold">
+                  Rakennetaan yrityksellesi botti, joka oikeasti auttaa.
+                </div>
+                <p className="mt-2 text-white/85">
+                  Jatkuva kehitys ja ylläpito sisältyy kaikkiin paketteihin. Se takaa että botti on kokoajan ajantasalla.
+                </p>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Miten botti toimii? – ei viivaa, vain tila */}
-      <section id="miten" className="py-10 scroll-mt-24">
+      {/* OMINAISUUDET */}
+      <section id="miten" className="py-12 scroll-mt-24">
         <Container>
-          <h2 className="text-2xl font-bold">Miten botti toimii?</h2>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>Vastata kysymyksiin automaattisesti yrityksesi omiin tietoihin pohjautuen.</li>
-            <li>Täydentää tietoa GPT-4o-tekoälyn avulla, kohteliaasti ja luonnollisella kielellä</li>
-            <li>
-              Tunnistaa puheen sävyjä ja tilanteita, ja ohjata asiakasta oikealle henkilölle tai
-              sähköpostiin erikoistilanteissa
-            </li>
-            <li>Oppia uutta myöhemmin, botti ei ole koskaan “valmis” vaan kehittyvä</li>
-            <li>
-              Ja kyllä! Voimme asettaa botin monikieliseksi joka tunnistaa automaattisesti asiakkaan
-              kielen.
-            </li>
-          </ul>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+                Miten botti toimii käytännössä?
+              </h2>
+              <p className="mt-2 text-slate-700">
+                Selkeä logiikka, joka pitää vastaukset luotettavina ja brändisi mukaisina.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {features.map((f) => (
+              <div
+                key={f.title}
+                className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
+              >
+                <div className="text-lg font-bold text-sky-950">{f.title}</div>
+                <p className="mt-2 text-slate-700">{f.text}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Coexistence - pitkä laatikko muiden alle */}
+          <div className="mt-6 rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm">
+            <div className="text-lg font-bold text-sky-950">
+              {coexistenceHowItWorks.title}
+            </div>
+            <p className="mt-2 text-slate-700">
+              {coexistenceHowItWorks.text}
+            </p>
+          </div>
         </Container>
       </section>
 
-      {/* Asiakas mukana – kevyt taustaraita erottamaan ilman viivaa */}
-      <section id="yhteistyo" className="py-10 bg-slate-50 scroll-mt-24">
+      {/* KENELLE SOPII */}
+      <section id="kenelle" className="py-12 scroll-mt-24">
         <Container>
-          <h2 className="text-2xl font-bold">Asiakas mukana kehityksessä alusta alkaen</h2>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>
-              Sinä päätät, millainen sävy botilla on – rento, asiallinen, kysyy takaisin?...
-            </li>
-            <li>
-              Kerrot, miten haluat botin käyttäytyvän erikoistilanteissa (esim. ohjaus ihmiselle ja
-              miten)
-            </li>
-            <li>
-              Määrittelemme yhdessä, mitä muistia ja tietoa botti oppii – esim. varausehdot,
-              aikataulut, peruutukset…
-            </li>
-          </ul>
-          <p className="mt-4 text-slate-700">
-            Lopputuloksena saat täysin brändiisi ja asiakaspalvelumalliisi sopivan ratkaisun!
-          </p>
-        </Container>
-      </section>
-
-      {/* Paketti – normaali tausta, ei viivaa */}
-      <section id="paketti" className="py-10 scroll-mt-24">
-        <Container>
-          <h2 className="text-2xl font-bold">Mitä kiinteään pakettiin sisältyy</h2>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>Botin suunnittelu ja rakentaminen Node.js:llä ja OpenAI GPT-4o:lla</li>
-            <li>FAQ-vastauslogiikka + fallback tekoälyyn</li>
-            <li>WhatsApp Business API -integraatio (Meta)</li>
-            <li>Click-to-chat-linkki ja QR-koodi käyttöön</li>
-            <li>Meta Business Manager -prosessin avustus</li>
-            <li>Ohjeet ja käyttöönotto</li>
-            <li>Käyttövalmis toimitus omalle serverille tai kehityspalvelimelle</li>
-            <li>Yksi testikierros ennen julkaisua, viimeistely</li>
-          </ul>
-        </Container>
-      </section>
-
-      {/* Testijakso – kevyt taustaraita */}
-      <section id="testijakso" className="py-10 bg-slate-50 scroll-mt-24">
-        <Container>
-          <h2 className="text-2xl font-bold">Testijakso</h2>
-          <p className="mt-3 text-slate-700">
-            Botin valmistuessa luovutan sen käyttöösi n. 2 viikon testijaksoksi.
-          </p>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>Voitte jutella botin kanssa kuten asiakkaat</li>
-            <li>Löytää tilanteita tai vastauksia, joita voidaan hienosäätää</li>
-            <li>Tehdä viimeiset muutokset ennen virallista käyttöä</li>
-          </ul>
-        </Container>
-      </section>
-
-      {/* Hinnoittelu – normaali tausta */}
-      <section id="hinnoittelu" className="py-10 scroll-mt-24">
-        <Container>
-          <h2 className="text-2xl font-bold">Hinnoittelu</h2>
-          <p className="mt-3 text-slate-700">Avaimet käteen -paketti: 790 € + alv</p>
-        </Container>
-      </section>
-
-      {/* Ylläpito – kevyt taustaraita */}
-      <section id="yllapito" className="py-10 bg-slate-50 scroll-mt-24">
-        <Container>
-          <h2 className="text-2xl font-bold">Ylläpito ja jatkokehitys:</h2>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>Minimi: 50 € / toimeksianto</li>
-            <li>Tuntityö: 20 € / h</li>
-            <li>Voimme myös sopia jatkuvasta ylläpidosta ja kehityksestä</li>
-          </ul>
-        </Container>
-      </section>
-
-      {/* Lisäkulut – normaali tausta */}
-      <section id="lisakulut" className="py-10 scroll-mt-24">
-        <Container>
-          <h2 className="text-2xl font-bold">
-            Mahdollisia lisäkuluja: (asiakas maksaa suoraan palveluntarjoajille, hinnat ovat tämän
-            hetkisiä arvioita)
+          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+            Kenelle tämä sopii?
           </h2>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>OpenAI API: käytön mukaan (yleensä muutamia euroja / kk)</li>
-            <li>
-              Meta / WhatsApp API: ensimmäiset 1000 keskustelua / kk ilmaiseksi, sen jälkeen n. 0,06
-              € / keskustelu
-            </li>
-            <li>Serveri: asiakkaan oma palvelin tai tarjoan sen lisähintaan</li>
-          </ul>
+          <p className="mt-2 text-slate-700">
+            Jos saat toistuvia kysymyksiä tai sesonki ruuhkauttaa viestit, tämä
+            on todennäköisesti yksi nopeimmista ROI-investoinneista.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {useCases.map((u) => (
+              <span
+                key={u}
+                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-sky-700 border border-sky-200 shadow-sm"
+              >
+                {u}
+              </span>
+            ))}
+          </div>
         </Container>
       </section>
 
-      {/* Räätälöinti – kevyt taustaraita */}
-      <section id="raatalointi" className="py-16 bg-slate-50 scroll-mt-24">
+      {/* ESIMERKKIKYSYMYKSET */}
+      <section id="esimerkit" className="py-12 scroll-mt-24">
         <Container>
-          <h2 className="text-2xl font-bold">Räätälöity juuri sinulle!</h2>
-          <p className="mt-3 text-slate-700">
-            Kaikki rakennetaan yrityksesi näköiseksi, olipa kyse sitten kielivalinnoista,
-            brändisävystä, visuaalisesta tyylistä tai erityisvaatimuksista.
-          </p>
-          <h3 className="mt-6 text-xl font-semibold">Jos haluat, botti voidaan myöhemmin opettaa:</h3>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>Lukemaan yrityksesi verkkosivun sisältö automaattisesti</li>
-            <li>Päivittämään tietoa dynaamisesti</li>
-            <li>Tai mitä vain keksit, teen kaikkeni sinun tyytyväisyyden vuoksi!</li>
-          </ul>
-          <p className="mt-4 text-slate-700">
-            Kilpailukykyinen hintani yhdistettynä tekoälypohjaiseen bottiin tekee tästä yhden
-            tehokkaimmista asiakaspalveluratkaisuista markkinoilla.
-          </p>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+                Tyypillisiä kysymyksiä, jotka botti hoitaa
+              </h2>
+              <p className="mt-2 text-slate-700">
+                Näillä botti alkaa säästää aikaa heti ensimmäisestä päivästä.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm">
+              <ul className="space-y-2 text-slate-700">
+                {exampleQs.map((q) => (
+                  <li key={q} className="flex gap-2">
+                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-400" />
+                    <span>{q}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Container>
       </section>
 
-      {/* Miksi valita – lisätään border-t korostukseksi (toinen ja viimeinen viiva) */}
-      <section id="miksi" className="py-16 border-t scroll-mt-24">
+      {/* PROSESSI */}
+      <section id="prosessi" className="py-12 bg-white/60 backdrop-blur-[2px] scroll-mt-24">
         <Container>
-          <h2 className="text-2xl font-bold text-center">🤔 Miksi valita tämä botti?</h2>
-          <ol className="mt-4 grid gap-6 sm:grid-cols-2">
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">1. Säästää aikaa ja rahaa heti</div>
-              <p className="text-slate-700 mt-1">
-                Botti vastaa automaattisesti 24/7 – ei tarvetta ilta- tai viikonloppupäivystykselle.
+          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+            Näin projekti etenee
+          </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s) => (
+              <div
+                key={s.step}
+                className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
+              >
+                <div className="text-sm font-semibold text-sky-600">
+                  Vaihe {s.step}
+                </div>
+                <div className="mt-1 text-lg font-bold text-sky-950">{s.title}</div>
+                <p className="mt-2 text-slate-700">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* MITÄ SAAT */}
+      <section id="paketti" className="py-12 scroll-mt-24">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-2 items-start">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+                Mitä palveluun sisältyy
+              </h2>
+              <p className="mt-2 text-slate-700">
+                Sisältö ja kanavat määräytyvät valitsemasi paketin mukaan.
               </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">2. Maksaa itsensä takaisin nopeasti</div>
-              <p className="text-slate-700 mt-1">
-                Botti maksaa usein saman verran kuin yksi viikonloppuvuoro, mutta toimii aina!
-              </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">3. Ei perusbotti – vaan älykäs</div>
-              <p className="text-slate-700 mt-1">
-                Ymmärtää murteet, virheet ja slangin. Kuulostaa brändillesi sopivalta.
-              </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">4. Sinä päätät, miten botti käyttäytyy</div>
-              <p className="text-slate-700 mt-1">
-                Valitset sävyn, toiminnan ja erikoistilanteet, täysin räätälöity.
-              </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">5. Botti kehittyy jatkuvasti</div>
-              <p className="text-slate-700 mt-1">
-                Voidaan opettaa lukemaan verkkosivuja, päivittymään, kasvamaan, eri alustoille tai kokonaan uusia ominaisuusksia.
-              </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">6. Testikäyttö ennen julkaisua</div>
-              <p className="text-slate-700 mt-1">
-                 Viikon testijakson aikana kartoitamme mahdollisia virhetilanteita ja hiomme botista juuri täydellisen sinun tarpeillesi..
-              </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">7. Kiinteä hinta – ei yllätyksiä</div>
-              <p className="text-slate-700 mt-1">
-                Koko paketti alk.790 € + alv. Päivitykset alk. 50 € tai 20 €/h.
-              </p>
-            </li>
-            <li className="rounded-lg border bg-white p-5">
-              <div className="font-semibold">8. Markkinoiden edullisin ratkaisu!</div>
-              <p className="text-slate-700 mt-1">
-                Ei piilokuluja, ei kuukausimaksuja – vain käyttöön perustuvat maksut.
-              </p>
-            </li>
-          </ol>
+            </div>
+
+            <div className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm">
+              <ul className="space-y-2 text-slate-700">
+                {included.map((i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-400" />
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* HINNOITTELU */}
+      <section id="hinnoittelu" className="py-14 bg-white/60 backdrop-blur-[2px] scroll-mt-24">
+        <Container>
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+              Hinnoittelu
+            </h2>
+            <p className="mt-2 text-slate-700">
+              Hinnoittelu on aloitusmaksu + kuukausimaksu. Verkkosivubotti ja WhatsApp-botti
+              voidaan toteuttaa erikseen tai osana samaa kokonaisuutta.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {pricingTiers.map((p) => (
+              <div
+                key={p.name}
+                className="rounded-3xl border border-sky-200 bg-white p-8 shadow-sm"
+              >
+                <div className="inline-flex rounded-full bg-sky-950 px-3 py-1 text-xs font-semibold text-white">
+                  {p.badge}
+                </div>
+                <h3 className="mt-4 text-2xl font-bold text-sky-950">
+                  {p.name}
+                </h3>
+                <p className="mt-1 text-sm text-slate-600">
+                  {p.summary}
+                </p>
+
+                <div className="mt-5 rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                  <div className="text-xs font-semibold text-sky-600">Aloitus</div>
+                  <div className="text-2xl font-extrabold text-sky-950">
+                    {p.setup}
+                  </div>
+                </div>
+                <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                  <div className="text-xs font-semibold text-sky-600">Kuukausi</div>
+                  <div className="text-xl font-bold text-sky-950">
+                    {p.monthly}
+                  </div>
+                </div>
+
+                <div className="mt-5 space-y-1 text-sm text-slate-700">
+                  {p.bullets.map((b) => (
+                    <div key={b}>• {b}</div>
+                  ))}
+                </div>
+
+                <div className="mt-6">
+                  <Link
+                    href="/#yhteys"
+                    className="rounded-lg px-5 py-3 text-white bg-sky-900 hover:bg-sky-800 text-center font-semibold block"
+                  >
+                    Pyydä demo
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Coexistence-lisäosa */}
+          <div className="mt-8 grid gap-6 lg:grid-cols-1">
+            {addons.map((a) => (
+              <div
+                key={a.name}
+                className="rounded-3xl border border-sky-200 bg-white p-8 shadow-sm"
+              >
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                  <div className="max-w-2xl">
+                    <h3 className="text-xl sm:text-2xl font-bold text-sky-950">
+                      {a.name}
+                    </h3>
+                    <p className="mt-2 text-slate-700 text-sm">
+                      {a.summary}
+                    </p>
+
+                    <div className="mt-4 grid gap-2 text-sm text-slate-700">
+                      {a.bullets.map((b) => (
+                        <div key={b}>• {b}</div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="min-w-[240px]">
+                    <div className="rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                      <div className="text-xs font-semibold text-sky-600">Aloituslisä</div>
+                      <div className="text-2xl font-extrabold text-sky-950">
+                        {a.setup}
+                      </div>
+                    </div>
+                    <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                      <div className="text-xs font-semibold text-sky-600">Kuukausilisä</div>
+                      <div className="text-xl font-bold text-sky-950">
+                        {a.monthly}
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-12 bg-white/60 backdrop-blur-[2px] scroll-mt-24">
+        <Container>
+          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+            Usein kysytyt
+          </h2>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {faq.map((f) => (
+              <div
+                key={f.q}
+                className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
+              >
+                <div className="font-bold text-sky-950">{f.q}</div>
+                <p className="mt-2 text-slate-700">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* LOPPU CTA */}
+      <section id="cta" className="py-16 scroll-mt-24">
+        <Container>
+          <div className="rounded-3xl border border-sky-200 bg-sky-950 px-8 py-12 text-white shadow-sm">
+            <div className="grid gap-8 lg:grid-cols-2 items-center">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold">
+                  Haluatko nähdä demon juuri sinun toimialallesi?
+                </h2>
+                <p className="mt-2 text-white/85">
+                  Pyydä ilmainen 2 viikon kokeilujakso ja katso miten asiakaspalvelubottini auttaa juuri sinun yritystä.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
+                <Link
+                  href="/#yhteys"
+                  className="rounded-lg px-6 py-3 bg-white text-sky-950 hover:bg-sky-50 text-center font-semibold"
+                >
+                  Pyydä demo
+                </Link>
+                <Link
+                  href="/"
+                  className="rounded-lg px-6 py-3 border border-white/30 hover:bg-white/10 text-center font-semibold"
+                >
+                  Takaisin etusivulle
+                </Link>
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
     </main>

@@ -62,13 +62,23 @@ export const PRICING = [
   featured: true,
 },
 
-  {
-    name: "Asiakaspalvelubotti",
-    price: "alk. 790 €",
-    period: "kerta",
-    features: ["Ei kuukausimaksuja(OpenAI kk-maksun lisäksi)", "What's App, ohjeistus meta business käyttöönotossa.", "Nettisivulle räätälöity ulkoasu.", "1 ilmainen testikierros."],
-    cta: "Ota yhteyttä ja pyydä tarjous!",
-  },
+  // FI
+{
+  name: "Asiakaspalvelubotti",
+  price: "alk. 590 €",
+  period: "aloitus + 89€kk",
+  features: [
+    "Alk: 590 € + 89 €/kk",
+    "1 kanava (WhatsApp tai verkkosivu)",
+    "Perus-FAQ + rajaukset",
+    "Brändin mukainen sävy",
+    "Kevyt ylläpito ja sisällön päivitykset",
+    "Nettisivulle räätälöity ulkoasu",
+    "2 viikon ilmainen kokeilu",
+  ],
+  cta: "Ota yhteyttä ja pyydä tarjous!",
+},
+
 ];
 
 // src/lib/data.ts

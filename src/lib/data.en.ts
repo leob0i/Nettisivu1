@@ -66,17 +66,21 @@ export const PRICING_EN = [
     featured: true,
   },
   {
-    name: "Customer Service Bot",
-    price: "Starting 790 €",
-    period: "one-time",
-    features: [
-      "No monthly fees (besides OpenAI usage)",
-      "WhatsApp setup guidance (Meta Business)",
-      "Custom website widget styling",
-      "1 free test round",
-    ],
-    cta: "Contact us for a quote!",
-  },
+  name: "Customer Service Bot",
+  price: "from 590 €",
+  period: "start + 89€ monthly",
+  features: [
+    "From: 590 € + 89 €/mo",
+    "1 channel (WhatsApp or website)",
+    "Basic FAQ + boundaries",
+    "Brand-aligned tone of voice",
+    "Light maintenance and content updates",
+    "Website chat UI tailored to your brand",
+    "2-week free trial",
+  ],
+  cta: "Contact me and request a quote!",
+},
+
 ] as const;
 
 // Jos haluat käyttää samoja logoja myös EN-sivulla,
