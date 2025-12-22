@@ -6,6 +6,12 @@ import { usePathname } from "next/navigation";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+function getErrorMessage(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  if (typeof err === "string") return err;
+  return "";
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
@@ -42,15 +48,23 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data: unknown = await res.json().catch(() => null);
 
-      if (!res.ok) throw new Error(data?.error || (isEN ? "Sending failed." : "Lähetys epäonnistui."));
+      const apiError =
+        data && typeof data === "object" && "error" in data
+          ? String((data as Record<string, unknown>).error ?? "")
+          : "";
+
+      if (!res.ok) {
+        throw new Error(apiError || (isEN ? "Sending failed." : "Lähetys epäonnistui."));
+      }
 
       setStatus("sent");
       form.reset();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus("error");
-      setError(err?.message || (isEN ? "An error occurred. Please try again." : "Tapahtui virhe. Kokeile uudelleen."));
+      const msg = getErrorMessage(err);
+      setError(msg || (isEN ? "An error occurred. Please try again." : "Tapahtui virhe. Kokeile uudelleen."));
     }
   }
 

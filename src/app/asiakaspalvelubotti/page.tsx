@@ -3,12 +3,46 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/container";
 import ContactForm from "@/components/contact1";
+import Script from "next/script";
+
 
 export const metadata: Metadata = {
-  title: "Asiakaspalvelubotti – Leo Digital",
+  metadataBase: new URL("https://www.leodigital.fi"),
+  alternates: {
+    canonical: "/services/asiakaspalvelubotti",
+  },
+
+  title: "Asiakaspalvelubotti WhatsAppiin ja verkkosivulle | Leo Digital",
   description:
-    "Älykäs asiakaspalvelubotti WhatsAppiin ja verkkosivulle. Hinnoittelu aloitusmaksu + kuukausimaksu: Start 590 € + 89 €/kk, Kasvu 1 100 € + 89 €/kk, Pro 1 990 € + 199 €/kk. WhatsApp Coexistence saatavilla lisäosana.",
+    "Älykäs asiakaspalvelubotti WhatsAppiin ja verkkosivulle. Vastaa 24/7 yrityksesi omilla tiedoilla. Hinnoittelu alk. 590 € + 89 €/kk. WhatsApp Coexistence lisäosana.",
+
+  openGraph: {
+    type: "website",
+    locale: "fi_FI",
+    url: "https://www.leodigital.fi/services/asiakaspalvelubotti",
+    siteName: "Leo Digital",
+    title: "Asiakaspalvelubotti WhatsAppiin ja verkkosivulle | Leo Digital",
+    description:
+      "Älykäs asiakaspalvelubotti WhatsAppiin ja verkkosivulle. Vastaa 24/7. Hinnoittelu alk. 590 € + 89 €/kk.",
+    images: [
+      {
+        url: "/og/asiakaspalvelubotti.png",
+        width: 1200,
+        height: 630,
+        alt: "Asiakaspalvelubotti WhatsAppiin ja verkkosivulle – Leo Digital",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Asiakaspalvelubotti WhatsAppiin ja verkkosivulle | Leo Digital",
+    description:
+      "Älykäs asiakaspalvelubotti WhatsAppiin ja verkkosivulle. Vastaa 24/7. Hinnoittelu alk. 590 € + 89 €/kk.",
+    images: ["/og/asiakaspalvelubotti.png"],
+  },
 };
+
 
 const badges = ["WhatsApp tai verkkosivu", "2 viikon ilmainen testijakso"];
 
@@ -158,6 +192,20 @@ const faq = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
+
+
 const card =
   "rounded-2xl border border-white/20 bg-white/[0.10] backdrop-blur p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.06)]";
 
@@ -167,6 +215,14 @@ const softCard =
 export default function Page() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-zinc-950 text-white pb-20">
+
+<Script
+  id="faq-schema"
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+/>
+
+
       {/* HERO */}
       <section id="hero" className="relative isolate scroll-mt-24">
         <Image
