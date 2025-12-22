@@ -14,7 +14,8 @@ export default function Footer() {
   const instagram = isEN ? SITE_EN.INSTAGRAM_URL : SITE.INSTAGRAM_URL;
 
   return (
-    <footer className="mt-16 bg-black text-slate-200 border-t border-white/10">
+    <footer className="bg-black text-slate-200 border-t border-white/10 pt-10">
+
       {/* relative -> mahdollistaa oikean reunan keskitetyn overlayn */}
       <Container className="py-6 relative">
         {/* Rivi: logo | kaikki teksti */}

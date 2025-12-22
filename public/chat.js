@@ -1,6 +1,9 @@
 function initChat() {
   const toggleBtn = document.getElementById('chat-toggle');
   const chatBox = document.getElementById('chat-box');
+  const widget = document.getElementById('chat-widget'); // UI state class
+toggleBtn.setAttribute('aria-expanded', 'false');
+
   const sendBtn = document.getElementById('send-chat');
   const input = document.getElementById('chat-input');
   const messages = document.getElementById('chat-messages');
@@ -77,9 +80,15 @@ composer.appendChild(emojiBtn);           //  emoji
 
     // Sama sulkemislogiikka kuin toggle napissa
     closeBtn.onclick = () => {
-      chatBox.classList.remove('active');
-      // (toggleBtn-ulkoasua ei muuteta)
-    };
+  chatBox.classList.remove('active');
+
+  // === KOHTA 2: UI state ===
+  widget?.classList.remove('open');
+  toggleBtn.classList.remove('close-mode');
+  toggleBtn.setAttribute('aria-expanded', 'false');
+  // =========================
+};
+
   }
 
 
@@ -92,16 +101,26 @@ composer.appendChild(emojiBtn);           //  emoji
   // toggleBtn.classList.remove('close-mode');
 
   toggleBtn.onclick = () => {
-    const isVisible = chatBox.classList.contains('active');
+  const isVisible = chatBox.classList.contains('active');
 
-    if (isVisible) {
-      chatBox.classList.remove('active');
-      // toggleBtn.textContent = '';
-      // toggleBtn.classList.remove('close-mode');
-    } else {
-      chatBox.classList.add('active');
-     // toggleBtn.textContent = '❌';
-      // toggleBtn.classList.add('close-mode');
+  if (isVisible) {
+    chatBox.classList.remove('active');
+
+    // === KOHTA 2: UI state ===
+    widget?.classList.remove('open');          // premium CSS glow / open-state
+    toggleBtn.classList.remove('close-mode');  // jos haluat käyttää close-modea
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    // ========================
+
+  } else {
+    chatBox.classList.add('active');
+
+    // === KOHTA 2: UI state ===
+    widget?.classList.add('open');
+    toggleBtn.classList.add('close-mode');     // valinnainen: tekee toggleen X-tilan
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(() => input?.focus()); // UX: kursori inputtiin
+    // ========================
 
       // --- TERVETULO frontista (ei backend-kutsua), vain kerran ---
       if (!hasGreeted) {
@@ -117,6 +136,9 @@ composer.appendChild(emojiBtn);           //  emoji
         messages.appendChild(botDiv);
         messages.scrollTop = messages.scrollHeight;
         hasGreeted = true;
+
+        addQuickReplies();
+
       }
     }
   };
@@ -127,6 +149,37 @@ composer.appendChild(emojiBtn);           //  emoji
     const m = String(date.getMinutes()).padStart(2, '0');
     return `${h}:${m}`;
   }
+
+
+function addQuickReplies() {
+  // Estä tuplalisäys (jos avataan/suljetaan chat)
+  if (document.getElementById('chat-quick-replies')) return;
+
+  const wrap = document.createElement('div');
+  wrap.id = 'chat-quick-replies';
+  wrap.className = 'chat-chips';
+
+  wrap.innerHTML = `
+    <button type="button" data-q="Mitä palveluita Leo Digital tarjoaa?">Palvelut</button>
+    <button type="button" data-q="Paljonko nettisivut maksavat?">Nettisivut hinta</button>
+    <button type="button" data-q="Paljonko asiakaspalvelubotti maksaa?">Botti hinta</button>
+    <button type="button" data-q="Kerro lisää asiakaspalvelubotista">Kerro lisää asiakaspalvelubotista</button>
+  `;
+
+  // Klikistä -> inputiin teksti + lähetä
+  wrap.querySelectorAll('button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const q = btn.getAttribute('data-q') || '';
+      input.value = q;
+      sendBtn.click();
+    });
+  });
+
+  // Lisätään viestilistan loppuun
+  messages.appendChild(wrap);
+  messages.scrollTop = messages.scrollHeight;
+}
+
 
   // --- LISÄYS: Typing-indikaattori ---
   function showTyping() {
@@ -146,6 +199,10 @@ composer.appendChild(emojiBtn);           //  emoji
   sendBtn.onclick = async () => {
     const userMsg = input.value.trim();
     if (!userMsg) return;
+
+    const chips = document.getElementById('chat-quick-replies');
+if (chips) chips.remove();
+
 
     const userDiv = document.createElement('div');
     userDiv.className = 'message user';

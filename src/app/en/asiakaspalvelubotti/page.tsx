@@ -2,70 +2,59 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/container";
-
+import ContactForm from "@/components/contact1";
 
 export const metadata: Metadata = {
   title: "Customer Service Bot – Leo Digital",
   description:
-    "An intelligent customer service bot for WhatsApp and your website. Pricing is setup fee + monthly fee: Start 590 € + 89 €/mo, Kasvu 1 100 € + 189 €/mo, Pro 2 200 € + 350 €/mo. WhatsApp Coexistence available as an add-on.",
+    "Smart customer service bot for WhatsApp and your website. Pricing is a setup fee + monthly fee: Start 590 € + 89 €/mo, Growth 1 100 € + 89 €/mo, Pro 1 990 € + 199 €/mo. WhatsApp Coexistence available as an add-on.",
 };
 
-const badges = [
-  "WhatsApp or website",
-  "2-week free trial",
-];
+const badges = ["WhatsApp or website", "2-week free trial period"];
 
 const highlights = [
   {
     title: "Replies 24/7",
-    text:
-      "Customers get answers instantly – even in the evenings and on weekends.",
+    text: "Customers get answers instantly – even in the evenings and on weekends.",
   },
   {
     title: "Less repetition",
-    text:
-      "The bot takes care of the most common questions, so you can focus on the most important cases.",
+    text: "The bot handles the most common questions, so you can focus on the most important cases.",
   },
   {
-    title: "Sounds like your brand",
-    text:
-      "Tone of voice, language, and boundaries are built to match your company’s style.",
+    title: "Reliable",
+    text: "The bot answers only based on your company’s own information and facts. Its tone is polite and clean.",
   },
 ];
 
 const features = [
   {
     title: "FAQ first, AI as support",
-    text:
-      "The bot primarily answers based on your company’s own information and uses AI only to complement and structure the response clearly.",
+    text: "The bot primarily answers based on your company’s own information and uses AI only to supplement and format the answer clearly.",
   },
   {
     title: "Understands real language",
-    text:
-      "Typos, everyday speech, dialects, and short questions won’t break the conversation.",
+    text: "Typos, spoken language, dialects, and short questions won’t break the conversation.",
   },
   {
-    title: "Smart handoff to a human",
-    text:
-      "When a situation is unclear or requires personal handling, the bot routes the customer to the right channel.",
+    title: "Routes to a human intelligently",
+    text: "When the situation is unclear or requires personal handling, the bot directs the customer to the right channel.",
   },
   {
     title: "Multilingual when needed",
-    text:
-      "We can configure the bot to detect the customer’s language and respond fluently in multiple languages.",
+    text: "We can configure the bot to detect the customer’s language and respond fluently in multiple languages.",
   },
 ];
 
 const coexistenceHowItWorks = {
   title: "WhatsApp Coexistence model in practice",
-  text:
-    "If you want both the bot and a person to serve customers using the same WhatsApp number, the Coexistence model can be enabled. The bot replies automatically during agreed hours and steps away from the conversation if it is not confident enough about an answer or if a human takes over. If needed, the bot can take the conversation back after an agreed delay. This enables smooth customer service without changing numbers or moving support to another channel.",
+  text: "When you want the bot and a human to serve customers using the same WhatsApp number, the Coexistence model can be enabled. The bot replies automatically during agreed hours and steps away from the conversation if it is not confident enough about the answer or if a human takes over the conversation. If needed, the bot can take the conversation back after an agreed delay. This enables smooth customer service without changing numbers or moving customer service to another channel.",
 };
 
 const useCases = [
   "Travel & activities",
   "Service businesses",
-  "E-commerce",
+  "Online stores",
   "Driving schools",
   "Local consumer services",
   "B2B services",
@@ -75,46 +64,19 @@ const exampleQs = [
   "How much does this cost?",
   "When do you have available times?",
   "How does booking / cancellation work?",
-  "Where is the meeting location?",
+  "Where is the meeting point?",
   "How fast do you deliver?",
-  "How can I reach customer support?",
-];
-
-const steps = [
-  {
-    step: "1",
-    title: "Discovery",
-    text:
-      "We review your company’s most common customer questions, channels, and desired tone of voice.",
-  },
-  {
-    step: "2",
-    title: "Knowledge base & logic",
-    text:
-      "I build the bot to answer based on your company’s own information and define the boundaries.",
-  },
-  {
-    step: "3",
-    title: "Integration",
-    text:
-      "WhatsApp Business API or website chat – or both – implemented and ready to use.",
-  },
-  {
-    step: "4",
-    title: "Launch & guidance",
-    text:
-      "Guidance for using the bot, continuous development and maintenance. ",
-  },
+  "How can I contact customer service?",
 ];
 
 const included = [
-  "Bot design and implementation (Node.js + OpenAI)",
+  "Bot planning and implementation (Node.js + OpenAI)",
   "FAQ answer logic + smart fallback",
   "Channel integration according to the selected package",
-  "Website chat UI tailored to your brand",
+  "Website chat UI customization to match your brand",
   "Assistance with the Meta Business Manager process (WhatsApp)",
   "Instructions and onboarding",
-  "Delivery to your own server or a development server",
+  "Delivery to your own server or development server",
   "1 test round + final polish",
 ];
 
@@ -123,7 +85,7 @@ const pricingTiers = [
     name: "Start",
     badge: "Easy start",
     setup: "590 €",
-    monthly: "89 € / kk",
+    monthly: "89 € / mo",
     summary: "1 channel, basic FAQ and light maintenance",
     bullets: [
       "1 channel (WhatsApp or website)",
@@ -133,15 +95,15 @@ const pricingTiers = [
     ],
   },
   {
-    name: "Kasvu",
+    name: "Growth",
     badge: "Popular choice",
     setup: "1 100 €",
-    monthly: "89 € / kk",
-    summary: "2 channels, broader tailoring and maintenance",
+    monthly: "89 € / mo",
+    summary: "2 channels, broader customization and maintenance",
     bullets: [
       "2 channels (WhatsApp + website)",
       "Broader knowledge base",
-      "More detailed usage rules",
+      "More precise usage rules",
       "More regular maintenance",
     ],
   },
@@ -149,13 +111,13 @@ const pricingTiers = [
     name: "Pro",
     badge: "For demanding use",
     setup: "1990 €",
-    monthly: "199 € / kk",
-    summary: "Multi-channel, broader capabilities and priority support",
+    monthly: "199 € / mo",
+    summary: "Multi-channel, broader features and priority support",
     bullets: [
       "Multi-channel solution",
-      "Broader capabilities",
+      "Broader features",
       "Priority support",
-      "Integrations negotiable",
+      "Integrations can be agreed",
     ],
   },
 ];
@@ -164,49 +126,49 @@ const addons = [
   {
     name: "WhatsApp Coexistence add-on",
     setup: "+ 390 €",
-    monthly: "+ 49 € / kk",
+    monthly: "+ 49 € / mo",
     summary:
-      "One number for both human and bot, AUTO/HUMAN modes, working-hours logic, and a safe handoff to a human.",
+      "Same number for human and bot, AUTO/HUMAN modes, business-hours logic, and safe handover to a human.",
     bullets: [
       "Human and bot on the same number",
       "AUTO/HUMAN modes",
-      "Working-hours logic",
-      "Handoff to a human when the bot is not confident",
-      "Conversation take-back after an agreed delay",
+      "Business-hours logic",
+      "Handover to a human when the bot isn’t sure",
+      "Takeback after an agreed delay",
     ],
   },
 ];
 
 const faq = [
   {
-    q: "Is this a traditional button-based bot?",
-    a:
-      "No. This is a modern AI-assisted bot that responds naturally and relies on your company’s own knowledge base.",
+    q: "Is this a traditional button bot?",
+    a: "No. This is a modern AI-powered bot that responds naturally and uses your company’s own knowledge base.",
   },
   {
     q: "Can the bot’s tone of voice be customized?",
-    a:
-      "Yes. We tailor the bot’s communication style to match your brand – relaxed, professional, or sales-focused.",
+    a: "Yes. We build the bot’s communication style to match your brand – casual, formal, or sales-oriented.",
   },
   {
     q: "What if the bot is not sure about the answer?",
-    a:
-      "Then it routes the customer to a human or the right channel. The goal is to minimize guessing.",
+    a: "Then it directs the customer to a human or the right channel. The goal is to minimize guessing.",
   },
   {
     q: "Does this also work on a website?",
-    a:
-      "Yes. The bot can be implemented for your website, WhatsApp, or both depending on the package.",
+    a: "Yes. The bot can be implemented for a website, WhatsApp, or both depending on the package.",
   },
-  
 ];
+
+const card =
+  "rounded-2xl border border-white/20 bg-white/[0.10] backdrop-blur p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.06)]";
+
+const softCard =
+  "rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.06)]";
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen pb-20 overflow-hidden bg-slate-50">
+    <main className="relative min-h-screen overflow-hidden bg-zinc-950 text-white pb-20">
       {/* HERO */}
-      <section id="hero" className="relative scroll-mt-24">
-        {/* HERON TAUSTAKUVA */}
+      <section id="hero" className="relative isolate scroll-mt-24">
         <Image
           src="/services/asiakaspalvelubotti-hero.jpg"
           alt=""
@@ -214,97 +176,90 @@ export default function Page() {
           priority
           sizes="100vw"
           aria-hidden="true"
-          className="
-            absolute inset-0 -z-0
-            object-cover object-center
-            pointer-events-none select-none
-          "
+          className="absolute inset-0 z-0 object-cover object-center pointer-events-none select-none opacity-80"
         />
 
-        {/* TUMMA OVERLAY – jotta kuva näkyy paremmin ja kontrasti paranee */}
         <div
           aria-hidden="true"
-          className="
-            absolute inset-0 -z-10
-            bg-gradient-to-b
-            from-slate-950/90 via-slate-950/70 to-slate-950/50
-            pointer-events-none
-          "
+          className="absolute inset-0 z-10 bg-gradient-to-b from-zinc-950/55 via-zinc-950/35 to-zinc-950/70 pointer-events-none"
         />
 
-        <Container className="relative z-20 py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-2 items-center">
+        {/* subtle accent glow */}
+        <div
+          aria-hidden="true"
+          className="absolute -top-40 left-1/2 z-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),rgba(217,70,239,0.10),transparent_60%)] blur-2xl"
+        />
+
+        <Container className="relative z-20 py-14 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <div className="flex flex-wrap gap-2">
                 {badges.map((b) => (
                   <span
                     key={b}
-                    className="rounded-full border border-sky-200 bg-white px-3 py-1 text-[10px] sm:text-xs font-semibold text-sky-700 shadow-sm"
-
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold text-white/90"
                   >
                     {b}
                   </span>
                 ))}
               </div>
 
-            <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-sm">
-  A customer service bot that replies 24/7{" "}
-  <span className="text-sky-200">
-    with your company’s own information
-  </span>
-</h1>
+              <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.08]">
+                <span className="text-sky-300">Customer service bot</span> that
+                replies <span className="text-sky-300">24/7</span> using your
+                company’s own information
+              </h1>
 
-<p className="mt-4 text-lg text-slate-100/90 max-w-xl drop-shadow-sm">
-  A modern WhatsApp and website bot that reduces repetitive
-  customer service work, improves response speed, and makes
-  your company look as professional as the best major brands.
-</p>
+              <p className="mt-4 text-base sm:text-lg text-white/80 max-w-xl">
+                A modern WhatsApp and website bot that reduces repetitive
+                customer service work, improves response speed, and looks as
+                professional as the best big brands.
+              </p>
 
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              {/* Note: left as-is as you provided (visible only in md->), so we don't break the layout */}
+              <div className="mt-6 hidden md:flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/#yhteys"
-                  className="rounded-lg px-5 py-3 text-white bg-sky-900 hover:bg-sky-800 text-center font-semibold shadow"
+                  className="rounded-xl px-5 py-3 text-white bg-gradient-to-r from-indigo-500 to-fuchsia-500 hover:opacity-95 text-center font-semibold shadow"
                 >
                   Request a demo
                 </Link>
                 <Link
                   href="#hinnoittelu"
-                  className="rounded-lg px-5 py-3 border border-sky-300 hover:bg-white text-sky-900 text-center font-semibold"
+                  className="rounded-xl px-5 py-3 border border-white/15 bg-white/[0.04] hover:bg-white/10 text-white text-center font-semibold"
                 >
-                  See pricing
+                  View pricing
                 </Link>
               </div>
 
-              <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-sky-200 bg-white px-4 py-3 shadow-sm">
-                <div className="text-sm text-sky-700">Setup + monthly</div>
-                <div className="text-lg font-extrabold text-sky-950">
-                  590 € + 89 € / kk
+              <div className="mt-7 inline-flex w-full sm:w-auto items-center justify-between sm:justify-start gap-3 rounded-2xl border border-white/12 bg-white/[0.06] px-4 py-3">
+                <div className="text-sm text-white/75">Setup + monthly</div>
+                <div className="text-lg font-extrabold text-white">
+                  590 € + 89 € / mo
                 </div>
-                <div className="text-xs text-sky-600">
-                  Start package
-                </div>
+                <div className="text-xs text-white/70">Start package</div>
               </div>
             </div>
 
-            {/* Oikea puoli: "glass" hyötykortit */}
+            {/* Right: highlight cards */}
             <div className="grid gap-4">
-              {highlights.map((h) => (
-                <div
-                  key={h.title}
-                  className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
-                >
-                  <div className="text-lg font-bold text-sky-950">{h.title}</div>
-                  <p className="mt-2 text-slate-700">{h.text}</p>
-                </div>
-              ))}
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                {highlights.map((h) => (
+                  <div key={h.title} className={card}>
+                    <div className="text-lg font-bold text-white">{h.title}</div>
+                    <p className="mt-2 text-white/75">{h.text}</p>
+                  </div>
+                ))}
+              </div>
 
-              <div className="rounded-2xl border border-sky-200 bg-sky-950 p-6 text-white shadow-sm">
-                <div className="text-sm opacity-80">Support</div>
-                <div className="mt-1 text-xl font-bold">
-                  We build a bot for your company that truly helps.
+              <div className="rounded-2xl border border-white/15 bg-white/[0.05] bg-gradient-to-br from-indigo-500/20 via-white/[0.05] to-fuchsia-500/14 p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.06)]">
+                <div className="text-sm text-white/75">Support</div>
+                <div className="mt-1 text-xl font-bold text-white">
+                  We’ll build a bot for your business that truly helps.
                 </div>
-                <p className="mt-2 text-white/85">
-                  Continuous development and maintenance are included in all packages. This ensures the bot stays up to date at all times.
+                <p className="mt-2 text-white/75">
+                  Continuous development and maintenance are included in all
+                  packages. This ensures the bot is always up to date.
                 </p>
               </div>
             </div>
@@ -312,60 +267,59 @@ export default function Page() {
         </Container>
       </section>
 
-      {/* OMINAISUUDET */}
-      <section id="miten" className="py-12 scroll-mt-24">
+      {/* FEATURES */}
+      <section
+        id="miten"
+        className="py-12 sm:py-14 scroll-mt-24 border-t border-white/10"
+      >
         <Container>
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
-                How does the bot work in practice?
-              </h2>
-              <p className="mt-2 text-slate-700">
-                Clear logic that keeps answers reliable and aligned with your brand.
-              </p>
-            </div>
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              How does the bot work in practice?
+            </h2>
+            <p className="mt-2 text-white/70">
+              Clear logic that keeps answers reliable and aligned with your
+              brand.
+            </p>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {features.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
-              >
-                <div className="text-lg font-bold text-sky-950">{f.title}</div>
-                <p className="mt-2 text-slate-700">{f.text}</p>
+              <div key={f.title} className={softCard}>
+                <div className="text-lg font-bold text-white">{f.title}</div>
+                <p className="mt-2 text-white/75">{f.text}</p>
               </div>
             ))}
           </div>
 
-          {/* Coexistence - pitkä laatikko muiden alle */}
-          <div className="mt-6 rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm">
-            <div className="text-lg font-bold text-sky-950">
+          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+            <div className="text-lg font-bold text-white">
               {coexistenceHowItWorks.title}
             </div>
-            <p className="mt-2 text-slate-700">
-              {coexistenceHowItWorks.text}
-            </p>
+            <p className="mt-2 text-white/75">{coexistenceHowItWorks.text}</p>
           </div>
         </Container>
       </section>
 
-      {/* KENELLE SOPII */}
-      <section id="kenelle" className="py-12 scroll-mt-24">
+      {/* WHO IS IT FOR */}
+      <section
+        id="kenelle"
+        className="py-12 sm:py-14 scroll-mt-24 border-t border-white/10"
+      >
         <Container>
-          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">
             Who is this for?
           </h2>
-          <p className="mt-2 text-slate-700">
-            If you receive recurring questions or seasonal peaks overload your inbox,
-            this is likely one of the fastest ROI investments you can make.
+          <p className="mt-2 text-white/70 max-w-2xl">
+            If you get repetitive questions or seasonal peaks overload your
+            inbox, this is likely one of the fastest ROI investments.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {useCases.map((u) => (
               <span
                 key={u}
-                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-sky-700 border border-sky-200 shadow-sm"
+                className="rounded-full border border-white/12 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-white/90"
               >
                 {u}
               </span>
@@ -374,24 +328,27 @@ export default function Page() {
         </Container>
       </section>
 
-      {/* ESIMERKKIKYSYMYKSET */}
-      <section id="esimerkit" className="py-12 scroll-mt-24">
+      {/* EXAMPLE QUESTIONS */}
+      <section
+        id="esimerkit"
+        className="py-12 sm:py-14 scroll-mt-24 border-t border-white/10"
+      >
         <Container>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+            <div className="max-w-xl">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
                 Typical questions the bot handles
               </h2>
-              <p className="mt-2 text-slate-700">
+              <p className="mt-2 text-white/70">
                 With these, the bot starts saving time from day one.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm">
-              <ul className="space-y-2 text-slate-700">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+              <ul className="space-y-2 text-white/80">
                 {exampleQs.map((q) => (
                   <li key={q} className="flex gap-2">
-                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-400" />
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500" />
                     <span>{q}</span>
                   </li>
                 ))}
@@ -401,47 +358,27 @@ export default function Page() {
         </Container>
       </section>
 
-      {/* PROSESSI */}
-      <section id="prosessi" className="py-12 bg-white/60 backdrop-blur-[2px] scroll-mt-24">
+      {/* WHAT YOU GET */}
+      <section
+        id="paketti"
+        className="py-12 sm:py-14 scroll-mt-24 border-t border-white/10"
+      >
         <Container>
-          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
-            This is how the project progresses
-          </h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s) => (
-              <div
-                key={s.step}
-                className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
-              >
-                <div className="text-sm font-semibold text-sky-600">
-                  Step {s.step}
-                </div>
-                <div className="mt-1 text-lg font-bold text-sky-950">{s.title}</div>
-                <p className="mt-2 text-slate-700">{s.text}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* MITÄ SAAT */}
-      <section id="paketti" className="py-12 scroll-mt-24">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-2 items-start">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
-                What’s included
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+            <div className="max-w-xl">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                What’s included in the service
               </h2>
-              <p className="mt-2 text-slate-700">
-                Content and channels are determined by the package you choose.
+              <p className="mt-2 text-white/70">
+                The content and channels depend on the package you choose.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm">
-              <ul className="space-y-2 text-slate-700">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+              <ul className="space-y-2 text-white/80">
                 {included.map((i) => (
                   <li key={i} className="flex gap-2">
-                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-400" />
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500" />
                     <span>{i}</span>
                   </li>
                 ))}
@@ -451,49 +388,57 @@ export default function Page() {
         </Container>
       </section>
 
-      {/* HINNOITTELU */}
-      <section id="hinnoittelu" className="py-14 bg-white/60 backdrop-blur-[2px] scroll-mt-24">
+      {/* PRICING */}
+      <section
+        id="hinnoittelu"
+        className="py-14 scroll-mt-24 border-t border-white/10"
+      >
         <Container>
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
               Pricing
             </h2>
-            <p className="mt-2 text-slate-700">
-              Pricing is a setup fee + monthly fee. The website bot and WhatsApp bot
-              can be implemented separately or as part of the same solution.
+            <p className="mt-2 text-white/70">
+              Pricing is a setup fee + monthly fee. The website bot and WhatsApp
+              bot can be implemented separately or as part of the same solution.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* Mobile: swipe cards. Desktop: grid. */}
+          <div className="mt-8 -mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
             {pricingTiers.map((p) => (
               <div
                 key={p.name}
-                className="rounded-3xl border border-sky-200 bg-white p-8 shadow-sm"
+                className="min-w-[85%] snap-center rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-[0_1px_0_0_rgba(255,255,255,0.06)] md:min-w-0"
               >
-                <div className="inline-flex rounded-full bg-sky-950 px-3 py-1 text-xs font-semibold text-white">
+                <div className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
                   {p.badge}
                 </div>
-                <h3 className="mt-4 text-2xl font-bold text-sky-950">
-                  {p.name}
-                </h3>
-                <p className="mt-1 text-sm text-slate-600">
-                  {p.summary}
-                </p>
 
-                <div className="mt-5 rounded-2xl border border-sky-200 bg-sky-50 p-4">
-                  <div className="text-xs font-semibold text-sky-600">Setup</div>
-                  <div className="text-2xl font-extrabold text-sky-950">
-                    {p.setup}
+                <h3 className="mt-4 text-2xl font-bold text-white">{p.name}</h3>
+                <p className="mt-1 text-sm text-white/70">{p.summary}</p>
+
+                <div className="mt-5 grid gap-3">
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <div className="text-xs font-semibold text-white/70">
+                      Setup
+                    </div>
+                    <div className="text-2xl font-extrabold text-white">
+                      {p.setup}
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <div className="text-xs font-semibold text-white/70">
+                      Monthly
+                    </div>
+                    <div className="text-xl font-bold text-white">
+                      {p.monthly}
+                    </div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4">
-                  <div className="text-xs font-semibold text-sky-600">Monthly</div>
-                  <div className="text-xl font-bold text-sky-950">
-                    {p.monthly}
-                  </div>
-                </div>
 
-                <div className="mt-5 space-y-1 text-sm text-slate-700">
+                <div className="mt-5 space-y-1 text-sm text-white/80">
                   {p.bullets.map((b) => (
                     <div key={b}>• {b}</div>
                   ))}
@@ -502,7 +447,7 @@ export default function Page() {
                 <div className="mt-6">
                   <Link
                     href="/#yhteys"
-                    className="rounded-lg px-5 py-3 text-white bg-sky-900 hover:bg-sky-800 text-center font-semibold block"
+                    className="rounded-xl px-5 py-3 text-white bg-gradient-to-r from-indigo-500 to-fuchsia-500 hover:opacity-95 text-center font-semibold block"
                   >
                     Request a demo
                   </Link>
@@ -511,45 +456,42 @@ export default function Page() {
             ))}
           </div>
 
-          {/* Coexistence-lisäosa */}
-          <div className="mt-8 grid gap-6 lg:grid-cols-1">
+          {/* Coexistence add-on */}
+          <div className="mt-8">
             {addons.map((a) => (
               <div
                 key={a.name}
-                className="rounded-3xl border border-sky-200 bg-white p-8 shadow-sm"
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-[0_1px_0_0_rgba(255,255,255,0.06)]"
               >
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   <div className="max-w-2xl">
-                    <h3 className="text-xl sm:text-2xl font-bold text-sky-950">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white">
                       {a.name}
                     </h3>
-                    <p className="mt-2 text-slate-700 text-sm">
-                      {a.summary}
-                    </p>
-
-                    <div className="mt-4 grid gap-2 text-sm text-slate-700">
+                    <p className="mt-2 text-white/75 text-sm">{a.summary}</p>
+                    <div className="mt-4 grid gap-2 text-sm text-white/80">
                       {a.bullets.map((b) => (
                         <div key={b}>• {b}</div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="min-w-[240px]">
-                    <div className="rounded-2xl border border-sky-200 bg-sky-50 p-4">
-                      <div className="text-xs font-semibold text-sky-600">Setup add-on</div>
-                      <div className="text-2xl font-extrabold text-sky-950">
+                  <div className="w-full lg:w-auto lg:min-w-[260px]">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="text-xs font-semibold text-white/70">
+                        Setup add-on
+                      </div>
+                      <div className="text-2xl font-extrabold text-white">
                         {a.setup}
                       </div>
                     </div>
-                    <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4">
-                      <div className="text-xs font-semibold text-sky-600">Monthly add-on</div>
-                      <div className="text-xl font-bold text-sky-950">
+                    <div className="mt-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="text-xs font-semibold text-white/70">
+                        Monthly add-on
+                      </div>
+                      <div className="text-xl font-bold text-white">
                         {a.monthly}
                       </div>
-                    </div>
-
-                    <div className="mt-4">
-                      
                     </div>
                   </div>
                 </div>
@@ -560,52 +502,54 @@ export default function Page() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-12 bg-white/60 backdrop-blur-[2px] scroll-mt-24">
+      <section id="faq" className="py-12 scroll-mt-24 border-t border-white/10">
         <Container>
-          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950">
-            Frequently asked questions
-          </h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">FAQ</h2>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {faq.map((f) => (
-              <div
-                key={f.q}
-                className="rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm"
-              >
-                <div className="font-bold text-sky-950">{f.q}</div>
-                <p className="mt-2 text-slate-700">{f.a}</p>
+              <div key={f.q} className={softCard}>
+                <div className="font-bold text-white">{f.q}</div>
+                <p className="mt-2 text-white/75">{f.a}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* LOPPU CTA */}
-      <section id="cta" className="py-16 scroll-mt-24">
+      {/* FINAL CTA + FORM */}
+      <section id="cta" className="py-16 scroll-mt-24 border-t border-white/10">
         <Container>
-          <div className="rounded-3xl border border-sky-200 bg-sky-950 px-8 py-12 text-white shadow-sm">
-            <div className="grid gap-8 lg:grid-cols-2 items-center">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-500/15 via-white/[0.04] to-fuchsia-500/10 px-6 sm:px-8 py-10 sm:py-12 shadow-[0_1px_0_0_rgba(255,255,255,0.06)]">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold">
-                  Want to see a demo for your industry?
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  Want to see a demo for your specific industry?
                 </h2>
-                <p className="mt-2 text-white/85">
-                  Request a free 2-week trial and see how my customer service bot helps your business.
+                <p className="mt-2 text-white/75">
+                  Request a free 2-week trial period and see how my customer
+                  service bot helps your business.
                 </p>
               </div>
+
               <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
                 <Link
-                  href="/#yhteys"
-                  className="rounded-lg px-6 py-3 bg-white text-sky-950 hover:bg-sky-50 text-center font-semibold"
+                  href="#yhteys"
+                  className="rounded-xl px-6 py-3 bg-white text-zinc-950 hover:bg-zinc-100 text-center font-semibold"
                 >
                   Request a demo
                 </Link>
                 <Link
                   href="/"
-                  className="rounded-lg px-6 py-3 border border-white/30 hover:bg-white/10 text-center font-semibold"
+                  className="rounded-xl px-6 py-3 border border-white/15 bg-white/[0.04] hover:bg-white/10 text-center font-semibold text-white"
                 >
-                  Back to homepage
+                  Back to home
                 </Link>
+              </div>
+
+              {/* Form inside the same box (a single #yhteys anchor) */}
+              <div id="yhteys" className="lg:col-span-2 scroll-mt-24">
+                <ContactForm />
               </div>
             </div>
           </div>
