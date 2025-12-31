@@ -9,7 +9,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.leodigital.fi"),
   alternates: {
-    canonical: "/services/asiakaspalvelubotti",
+    canonical: "/asiakaspalvelubotti",
   },
 
   title: "Asiakaspalvelubotti WhatsAppiin ja verkkosivulle | Leo Digital",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fi_FI",
-    url: "https://www.leodigital.fi/services/asiakaspalvelubotti",
+    url:  "https://www.leodigital.fi/asiakaspalvelubotti",
     siteName: "Leo Digital",
     title: "Asiakaspalvelubotti WhatsAppiin ja verkkosivulle | Leo Digital",
     description:
@@ -246,7 +246,7 @@ export default function Page() {
           className="absolute -top-40 left-1/2 z-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),rgba(217,70,239,0.10),transparent_60%)] blur-2xl"
         />
 
-        <Container className="relative z-20 py-14 sm:py-20">
+        <Container className="relative z-20 pt-24 pb-14 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <div className="flex flex-wrap gap-2">
