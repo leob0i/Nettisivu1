@@ -26,7 +26,7 @@ export const SITE: SiteConfig = {
   phone: "",
   email: "leo@leodigital.fi",
   address: "",
-  businessId: "",
+  businessId: " Y 3452422-4 ",
   nav: [
     { label: "Palvelut", href: "/#palvelut" },
     { label: "Asiakaspalvelurobotti", href: "/asiakaspalvelubotti" }, // ei targetia → aukeaa samassa välilehdessä

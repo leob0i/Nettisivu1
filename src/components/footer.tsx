@@ -5,6 +5,8 @@ import { SITE } from "@/lib/site";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { SITE_EN } from "@/lib/site.en";
+import Link from "next/link";
+
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -133,13 +135,25 @@ export default function Footer() {
       {/* poistettu border-t */}
       <div>
         <Container className="py-3 text-xs text-slate-400 flex items-center justify-between">
-          <span>
-            © {year} {T.brand}. {isEN ? "All rights reserved." : "Kaikki oikeudet pidätetään."}
-          </span>
-          <a href="#top" className="hover:underline text-slate-200">
-            {isEN ? "Back to top ↑" : "Takaisin ylös ↑"}
-          </a>
-        </Container>
+  <span>
+    © {year} {T.brand}. {isEN ? "All rights reserved." : "Kaikki oikeudet pidätetään."}
+  </span>
+
+  <div className="flex items-center gap-4">
+    <Link href="/terms" className="hover:underline text-slate-200">
+      {isEN ? "Terms" : "Käyttöehdot"}
+    </Link>
+
+    <Link href="/data-deletion" className="hover:underline text-slate-200">
+      {isEN ? "Data deletion" : "Tietojen poisto"}
+    </Link>
+
+    <a href="#top" className="hover:underline text-slate-200 whitespace-nowrap">
+      {isEN ? "Back to top ↑" : "Takaisin ylös ↑"}
+    </a>
+  </div>
+</Container>
+
       </div>
     </footer>
   );
