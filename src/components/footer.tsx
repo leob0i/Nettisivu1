@@ -144,6 +144,11 @@ export default function Footer() {
       {isEN ? "Terms" : "Käyttöehdot"}
     </Link>
 
+    <Link href="/privacy" className="hover:underline text-slate-200">
+  {isEN ? "Privacy" : "Tietosuoja"}
+</Link>
+
+
     <Link href="/data-deletion" className="hover:underline text-slate-200">
       {isEN ? "Data deletion" : "Tietojen poisto"}
     </Link>
@@ -152,6 +157,8 @@ export default function Footer() {
       {isEN ? "Back to top ↑" : "Takaisin ylös ↑"}
     </a>
   </div>
+
+  
 </Container>
 
       </div>
