@@ -16,7 +16,14 @@ export default function Header() {
   const T = isEN ? SITE_EN : SITE; // T = nykyinen SITE valitulla kielellä
 
   // Poistetaan Meistä/About navigaatiosta
-  const navItems = T.nav.filter((n) => n.label !== (isEN ? "About" : "Meistä"));
+  // const navItems = T.nav.filter((n) => n.label !== (isEN ? "About" : "Meistä"));
+
+  // Kommentoidaan Hinnasto/Pricing pois navigaatiosta + pidetään edelleen Meistä/About pois
+  const navItems = T.nav.filter(
+    (n) =>
+      n.label !== (isEN ? "About" : "Meistä") &&
+      n.label !== (isEN ? "Pricing" : "Hinnasto")
+  );
 
   // Kielikytkimen polut:
   //  - FI: polku ilman /en-prefiksiä
@@ -267,9 +274,6 @@ export default function Header() {
           >
             {contactLabel}
           </a>
-
-          
-          
         </Container>
       </div>
     </header>

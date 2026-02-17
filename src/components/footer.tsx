@@ -82,11 +82,6 @@ export default function Footer() {
                 </a>
               )}
               {SITE.address && <div>{SITE.address}</div>}
-              {SITE.businessId && (
-                <div className="text-slate-400">
-                  {isEN ? "Business ID" : "Y-tunnus"}: {SITE.businessId}
-                </div>
-              )}
             </div>
           </div>
         </div>

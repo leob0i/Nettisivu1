@@ -40,7 +40,7 @@ export default function Contact() {
       {/* Taustakuva */}
       <div className="absolute inset-0">
         <Image
-          src="/kutistepussi.sivu.jpg" // ✅ vaihda oma taustakuva tarvittaessa
+          src="/hero.kuva.png" // ✅ vaihda oma taustakuva tarvittaessa
           alt={isEN ? "Contact background" : "Yhteys-taustakuva"}
           fill
           className="h-full w-full object-cover"
