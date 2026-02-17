@@ -12,7 +12,7 @@ export default function Hero() {
   const T = isEN ? SITE_EN : SITE;
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-[url('/hero-poster.jpg')] bg-cover bg-center">
       {/* TAUSTAVIDEO */}
       <video
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center z-0"
@@ -21,6 +21,7 @@ export default function Hero() {
         loop
         playsInline
         preload="metadata"
+        poster="/hero.kuva.png"
         aria-hidden="true"
       >
         <source src="/hero.mp4" type="video/mp4" />

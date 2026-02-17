@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { SITE_EN } from "@/lib/site.en";
 import Link from "next/link";
 
-
 export default function Footer() {
   const year = new Date().getFullYear();
   const pathname = usePathname() || "/";
@@ -17,7 +16,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-slate-200 border-t border-white/10 pt-10">
-
       {/* relative -> mahdollistaa oikean reunan keskitetyn overlayn */}
       <Container className="py-6 relative">
         {/* Rivi: logo | kaikki teksti */}
@@ -32,10 +30,20 @@ export default function Footer() {
           />
 
           {/* Kaikki teksti logon oikealle puolelle */}
-          <div className="min-w-0">
+          {/* ✅ Lisätty md:pr-72 ettei oikean reunan overlay (IG+email) mene tekstien päälle */}
+          <div className="min-w-0 md:pr-72">
             {/* Ylärivi: brändi vasemmalle, kontaktirivi oikealle */}
             <div className="flex items-center gap-4">
-              <div className="font-semibold text-white">{T.brand}</div>
+              {/* ✅ Brändi + Y-tunnus siististi näkyviin vasemmalle */}
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="font-semibold text-white">{T.brand}</div>
+
+                {SITE.businessId && (
+                  <span className="text-xs text-slate-400 whitespace-nowrap">
+                    {isEN ? "Business ID" : "Y-tunnus"}: {SITE.businessId}
+                  </span>
+                )}
+              </div>
 
               {/* Desktop-kontaktirivi ilman emailia (email tulee oikean reunan overlayhin) */}
               <div className="hidden md:flex items-center gap-4 text-sm text-slate-300 ml-auto">
@@ -48,7 +56,7 @@ export default function Footer() {
                   </a>
                 )}
                 {SITE.address && <span className="truncate">{SITE.address}</span>}
-                {SITE.businessId && <span className="text-slate-400">{SITE.businessId}</span>}
+                {/* ✅ Poistettu businessId tästä, koska se jäi overlayn alle */}
                 {/* IG + Email renderöidään alla absoluuttiseen oikeaan reunaan */}
               </div>
             </div>
@@ -74,7 +82,11 @@ export default function Footer() {
                 </a>
               )}
               {SITE.address && <div>{SITE.address}</div>}
-              {SITE.businessId && <div className="text-slate-400">{SITE.businessId}</div>}
+              {SITE.businessId && (
+                <div className="text-slate-400">
+                  {isEN ? "Business ID" : "Y-tunnus"}: {SITE.businessId}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -84,40 +96,40 @@ export default function Footer() {
           <div className="pointer-events-auto absolute right-4 top-1/2 hidden md:flex -translate-y-1/2 items-center gap-3">
             {instagram ? (
               <a
-  href={instagram}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Instagram"
-  title="Instagram"
-  className="inline-flex h-12 w-12 items-center justify-center rounded hover:bg-white/5 transition"
->
-  <svg viewBox="0 0 256 256" aria-hidden="true" className="block h-8 w-8">
-    <rect
-      x="24"
-      y="24"
-      width="208"
-      height="208"
-      rx="56"
-      ry="56"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="16"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle
-      cx="128"
-      cy="128"
-      r="50"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="16"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle cx="196" cy="68" r="12" fill="currentColor" />
-  </svg>
-</a>
+                href={instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+                className="inline-flex h-12 w-12 items-center justify-center rounded hover:bg-white/5 transition"
+              >
+                <svg viewBox="0 0 256 256" aria-hidden="true" className="block h-8 w-8">
+                  <rect
+                    x="24"
+                    y="24"
+                    width="208"
+                    height="208"
+                    rx="56"
+                    ry="56"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="16"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle
+                    cx="128"
+                    cy="128"
+                    r="50"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="16"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="196" cy="68" r="12" fill="currentColor" />
+                </svg>
+              </a>
             ) : null}
 
             {SITE.email ? (
@@ -135,32 +147,28 @@ export default function Footer() {
       {/* poistettu border-t */}
       <div>
         <Container className="py-3 text-xs text-slate-400 flex items-center justify-between">
-  <span>
-    © {year} {T.brand}. {isEN ? "All rights reserved." : "Kaikki oikeudet pidätetään."}
-  </span>
+          <span>
+            © {year} {T.brand}. {isEN ? "All rights reserved." : "Kaikki oikeudet pidätetään."}
+          </span>
 
-  <div className="flex items-center gap-4">
-    <Link href="/terms" className="hover:underline text-slate-200">
-      {isEN ? "Terms" : "Käyttöehdot"}
-    </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="hover:underline text-slate-200">
+              {isEN ? "Terms" : "Käyttöehdot"}
+            </Link>
 
-    <Link href="/privacy" className="hover:underline text-slate-200">
-  {isEN ? "Privacy" : "Tietosuoja"}
-</Link>
+            <Link href="/privacy" className="hover:underline text-slate-200">
+              {isEN ? "Privacy" : "Tietosuoja"}
+            </Link>
 
+            <Link href="/data-deletion" className="hover:underline text-slate-200">
+              {isEN ? "Data deletion" : "Tietojen poisto"}
+            </Link>
 
-    <Link href="/data-deletion" className="hover:underline text-slate-200">
-      {isEN ? "Data deletion" : "Tietojen poisto"}
-    </Link>
-
-    <a href="#top" className="hover:underline text-slate-200 whitespace-nowrap">
-      {isEN ? "Back to top ↑" : "Takaisin ylös ↑"}
-    </a>
-  </div>
-
-  
-</Container>
-
+            <a href="#top" className="hover:underline text-slate-200 whitespace-nowrap">
+              {isEN ? "Back to top ↑" : "Takaisin ylös ↑"}
+            </a>
+          </div>
+        </Container>
       </div>
     </footer>
   );

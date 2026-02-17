@@ -8,12 +8,12 @@ import About from "@/components/about";
 import Clients from "@/components/clients";
 import Testimonials from "@/components/testimonials";
 
-
 export default function Page() {
   return (
     <main>
       <Hero />
 
+      {/* ✅ Nämä osiot ovat "container-leveydellä" (max-width + padding) */}
       <Container className="py-12 sm:py-20" id="palvelut">
         <Services />
       </Container>
@@ -22,28 +22,25 @@ export default function Page() {
         <About />
       </Container>
 
-      {/* 
+      {/*
       <Container className="py-12 sm:py-20" id="referenssit">
         <Portfolio />
       </Container>
       */}
 
-      <Container className="py-12 sm:py-20" id="hinnasto">
-        <Pricing />
-      </Container>
 
       <Container className="py-12 sm:py-20" id="asiakkaat">
         <Clients />
       </Container>
 
-      {/* ARVOSTELU – yksi iso kortti */}
+      {/* ARVOSTELU – yksi iso kortti (container-leveydellä) */}
       <Container className="py-12 sm:py-20" id="arvostelut">
         <Testimonials />
       </Container>
 
-      <Container className="py-12 sm:py-20" id="yhteys">
-        <Contact />
-      </Container>
+      {/* ✅ CONTACT KOKO LEVEÄ (full-width tausta / kuva) */}
+      {/* TÄRKEÄÄ: id="yhteys" kannattaa olla Contact.tsx:n <section>-tagissa */}
+      <Contact />
     </main>
   );
 }

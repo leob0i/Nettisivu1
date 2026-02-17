@@ -1,90 +1,158 @@
-export const SERVICES = [
+// src/lib/data.ts
+
+// -----------------------------
+// Clients
+// -----------------------------
+export type ClientLogo = {
+  name: string;
+  logo: string;
+  href: string;
+};
+
+export const LOGOS: ClientLogo[] = [
+  {
+    name: "Rautaranta OY",
+    logo: "/clients/Rautarantalogo.png",
+    href: "https://www.rautaranta.fi/",
+  },
+  {
+    name: "Kelmutus",
+    logo: "/clients/logo.kelmutus.png",
+    href: "https://www.kelmutus.fi/",
+  },
+];
+
+// -----------------------------
+// Services
+// -----------------------------
+export type Service = {
+  title: string;
+  desc: string;
+  points: string[];
+  afterPoints?: string;
+  img: string;
+  href?: string;
+};
+
+export const SERVICES: Service[] = [
   {
     title: "Verkkosivut & verkkokaupat",
-    desc: "Nopeat, hakukoneystävälliset sivut, jotka tuottavat liidejä.",
-    points: ["Suunnittelu yhdessä tarpeen mukaan", "Räätälöity ulkoasu", "Yksi tai useampi sivuinen", "Kaikki mahdollista toiveidesi mukaan"],
+    desc: "Näyttävät, hakukoneystävälliset sivut, jotka jäävät mieleen asiakkaallesi.",
+    points: [
+      "Suunnittelu yhdessä tarpeen mukaan",
+      "Räätälöity ulkoasu (ei valmispohjia)",
+      "SEO, eli hakukonenäkyvyys huomioidaan alusta alkaen.",
+      "Kaikki mahdollista toiveidesi mukaan",
+    ],
+    afterPoints:
+      "Kaikki sivut tehdään yksilöllisesti koodaten, ei valmispohjia. Tämä antaa hyvät lähtökohdat Google-näkyvyydelle ja täyden vapauden toteuttaa ulkoasu juuri sinun tarpeisiin. Sivua voidaan muokata ja päivittää aina kun haluat.",
     img: "/services/website.jpg",
   },
   {
     title: "Asiakaspalvelubotti",
-    desc: "Tekoälyllä varustettu älykäsasikaspalvelubotti joka toimii 24/7.",
-    points: ["Toimii 24/7", "Vastaa yritysten tietojen mukaisesti ja kohteliaasti", "Ohjaa tarvittaessa ihmiselle tai toisiin kanaviin", "WhatsAppiin, nettisivulle tai minne vain"],
+    desc: "Tekoälyllä varustettu älykäs asiakaspalvelubotti joka toimii 24/7.",
+    points: [
+      "Toimii 24/7",
+      "Vastaa yrityksen tietojen mukaisesti ja kohteliaasti",
+      "Ohjaa tarvittaessa ihmiselle tai toisiin kanaviin",
+      "WhatsAppiin, nettisivulle, Instagramiin tai minne vain",
+    ],
     img: "/services/chat.jpg",
     href: "/asiakaspalvelubotti",
   },
   {
     title: "Some & mainonta",
     desc: "Julkaisut, mainokset ja mittarit samassa paketissa.",
-    points: ["suunnittelu", "ylläpito", "Mainosbibliot", "Sisältökalenterit", "Raportointi"],
+    points: ["Suunnittelu", "Ylläpito", "Mainosbibliot", "Sisältökalenterit", "Raportointi"],
     img: "/services/some.jpg",
   },
   {
     title: "Puhelinsovellukset",
-    desc: "Iphone ja Androind sovellukset toiveidesi mukaan.",
-    points: ["yrityksille", "asikkaille", "yhteisöille kuten työpaikan sisäinen kommunikointi", "mitä vain!"],
+    desc: "iPhone- ja Android-sovellukset toiveidesi mukaan.",
+    points: [
+      "Yrityksille",
+      "Asiakkaille",
+      "Yhteisöille kuten työpaikan sisäinen kommunikointi",
+      "Mitä vain!",
+    ],
     img: "/services/puhelin.jpg",
   },
 ];
 
-export const PORTFOLIO = [
+// -----------------------------
+// Portfolio
+// -----------------------------
+export type PortfolioItem = {
+  title: string;
+  tag: string;
+  href: string;
+  img: string;
+};
+
+export const PORTFOLIO: PortfolioItem[] = [
   { title: "Kivila Oy", tag: "Verkkosivut", href: "#", img: "/placeholder.svg" },
   { title: "Nordic Fit", tag: "Verkkokauppa", href: "#", img: "/placeholder.svg" },
   { title: "Cafe Lumi", tag: "Brändi + sivut", href: "#", img: "/placeholder.svg" },
 ];
 
-export const PRICING = [
-{
-  name: "Nettisivu – starttipaketti",
-  price: "299 €",
-  period: "kerta",
-  features: [
-    "1–3 selkeää sivua (esim. etusivu, palvelut, yhteystiedot)",
-    "Räätälöity ulkoasu yrityksesi ilmeen mukaan",
-    "Yhteydenottolomake, joka ohjaa viestit suoraan sähköpostiisi",
-    "Perus-SEO: otsikot, metakuvaukset ja selkeä sivurakenne",
-    "Julkaisu & lyhyt opastus sivujen käyttöön",
-    "Lisäkieli (esim. englanti) alk. 20 €/sivu"
-  ],
-  cta: "Ota yhteyttä ja pyydä tarkka tarjous",
-},
-{
-  name: "Keskisuuri tai suuri nettisivu",
-  price: "alk. 399 €",
-  period: "kerta",
-  features: [
-    "Kaikki starttipaketin edut",
-    "5+ sivua – lisäsivut alk. 49 €/sivu",
-    "Selkeä sivurakenne useammalle palvelulle tai toimipisteelle",
-    "Laajennettu SEO ja perusanalytiikka (esim. Google Analytics)",
-    "Lisäkieli (esim. englanti) alk. 20 €/sivu",
-  ],
-  cta: "Ota yhteyttä ja pyydä tarkka tarjous",
-  featured: true,
-},
+// -----------------------------
+// Pricing
+// -----------------------------
+export type PricingPlan = {
+  name: string;
+  subtitle?: string;
+  price: string;
+  period: string;
+  features: string[];
+  fineprint?: string;
+  cta: string;
+  featured?: boolean;
+};
 
-  // FI
-{
-  name: "Asiakaspalvelubotti",
-  price: "alk. 590 €",
-  period: "aloitus + 89€kk",
-  features: [
-    "Alk: 590 € + 89 €/kk",
-    "1 kanava (WhatsApp tai verkkosivu)",
-    "Perus-FAQ + rajaukset",
-    "Brändin mukainen sävy",
-    "Kevyt ylläpito ja sisällön päivitykset",
-    "Nettisivulle räätälöity ulkoasu",
-    "2 viikon ilmainen kokeilu",
-  ],
-  cta: "Ota yhteyttä ja pyydä tarjous!",
-},
-
-];
-
-// src/lib/data.ts
-export type ClientLogo = { name: string; logo: string };
-
-export const LOGOS: ClientLogo[] = [
-  { name: "Rautaranta OY", logo: "/clients/Rautarantalogo.png" },
-  // lisää muita tähän...
+export const PRICING: PricingPlan[] = [
+  {
+    name: "Nettisivu – starttipaketti",
+    price: "299 €",
+    period: "kerta",
+    features: [
+      "1–3 sivua (etusivu, palvelut, yhteystiedot)",
+      "Räätälöity ulkoasu yritysilmeen mukaan",
+      "Yhteydenottolomake → viestit suoraan sähköpostiisi",
+      "Perus-SEO (otsikot, metat, sivurakenne)",
+      "Julkaisu + lyhyt opastus käyttöön",
+    ],
+    fineprint: "Lisäkieli (esim. EN) alk. 45 €/kieli.",
+    cta: "Pyydä tarjous",
+  },
+  {
+    name: "Keskisuuri tai suuri nettisivu",
+    price: "alk. 399 €",
+    period: "kerta",
+    features: [
+      "Kaikki starttipaketin edut",
+      "5+ sivua (lisäsivut alk. 49 €/sivu)",
+      "Rakenne useammalle palvelulle/toimipisteelle",
+      "Laajennettu SEO + perusanalytiikka",
+      "Monthly Promo -osio (päivität tekstiä itse)",
+    ],
+    fineprint: "Lisäkieli (esim. EN) alk. 49 €/kieli.",
+    cta: "Pyydä tarjous",
+    featured: true,
+  },
+  {
+    name: "Take care of me",
+    subtitle:
+      "Ylläpitopaketti nettisivun lisäksi – sivut pysyvät ajantasalla, sinä keskityt bisnekseen.",
+    price: "199 €",
+    period: "kk (toistaiseksi) + nettisivu erikseen",
+    features: [
+      "Jatkuva tuki",
+      "Päivitykset ja uudet osiot (paketin työmäärällä)",
+      "Jatkuvat SEO-parannukset",
+      "Domain-hallinta ja ylläpito",
+      "Lisäpalvelut: asiakaspalvelubotti + kuvien omapäivitys",
+    ],
+    fineprint: "Sisältää noin 4 h työtä / kk.",
+    cta: "Pyydä tarjous",
+  },
 ];
