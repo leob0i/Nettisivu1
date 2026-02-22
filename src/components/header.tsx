@@ -8,26 +8,32 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { SITE_EN } from "@/lib/site.en";
 
+// Palvelut-linkin reitti – vaihda tarvittaessa
+const PALVELUT_HREF = "/palvelutsivu";
+const PALVELUT_HREF_EN = "/en/palvelutsivu";
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const pathname = usePathname() || "/";
   const isEN = pathname === "/en" || pathname.startsWith("/en/");
-  const T = isEN ? SITE_EN : SITE; // T = nykyinen SITE valitulla kielellä
+  const T = isEN ? SITE_EN : SITE;
 
-  // Poistetaan Meistä/About navigaatiosta
-  // const navItems = T.nav.filter((n) => n.label !== (isEN ? "About" : "Meistä"));
+  const navItems = T.nav
+    .filter(
+      (n) =>
+        n.label !== (isEN ? "About" : "Meistä") &&
+        n.label !== (isEN ? "Pricing" : "Hinnasto")
+    )
+    // Ylikirjoitetaan Palvelut / Services -linkin href
+    .map((n) => {
+      const isPalvelut = n.label === "Palvelut" || n.label === "Services";
+      if (isPalvelut) {
+        return { ...n, href: isEN ? PALVELUT_HREF_EN : PALVELUT_HREF };
+      }
+      return n;
+    });
 
-  // Kommentoidaan Hinnasto/Pricing pois navigaatiosta + pidetään edelleen Meistä/About pois
-  const navItems = T.nav.filter(
-    (n) =>
-      n.label !== (isEN ? "About" : "Meistä") &&
-      n.label !== (isEN ? "Pricing" : "Hinnasto")
-  );
-
-  // Kielikytkimen polut:
-  //  - FI: polku ilman /en-prefiksiä
-  //  - EN: sama polku mutta /en-prefiksillä
   let cleanPath = pathname;
   if (isEN) {
     cleanPath = cleanPath.replace(/^\/en/, "") || "/";
@@ -38,9 +44,7 @@ export default function Header() {
 
   const contactLabel = isEN ? "Contact" : "Ota yhteyttä";
 
-  // Huolehtii, että linkit pysyvät valitussa kielessä
   const resolveHref = (href: string) => {
-    // Ulkoiset linkit jätetään rauhaan
     if (
       href.startsWith("http://") ||
       href.startsWith("https://") ||
@@ -51,7 +55,6 @@ export default function Header() {
     }
 
     if (isEN) {
-      // EN: lisätään /en prefix sisäisiin linkkeihin
       if (href === "/en" || href.startsWith("/en/") || href.startsWith("/en#")) {
         return href;
       }
@@ -60,7 +63,6 @@ export default function Header() {
       if (href.startsWith("#")) return `/en${href}`;
       return href;
     } else {
-      // FI: poistetaan /en prefix jos sellainen on
       if (href === "/en" || href === "/en/") return "/";
       if (href.startsWith("/en/")) {
         const stripped = href.replace(/^\/en/, "");
@@ -72,18 +74,12 @@ export default function Header() {
 
   const contactHref = resolveHref("#yhteys");
 
-  // Instagram URL – vaihda tähän oma profiilisi
-  const instagramUrl = "https://www.instagram.com/leodigital.fi";
-
   return (
-    // Fixed navbar looppaavan videon / taustakuvan päällä
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-md backdrop-saturate-150">
       <div className="px-3 sm:px-4 lg:px-8 py-1.5 lg:py-2.5">
         {/* DESKTOP */}
         <Container className="hidden items-center md:flex">
-          {/* VASEN: logo + navigaatio */}
           <div className="flex flex-1 items-center gap-4">
-            {/* Logo vasemmalle – sama koko, reitittää kielen mukaan */}
             <Link
               href={isEN ? "/en" : "/"}
               className="flex min-w-[80px] items-center justify-center px-4"
@@ -100,11 +96,9 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Tekstit heti logon jälkeen */}
             <nav className="flex flex-1 items-center gap-4 text-[11px] font-medium text-slate-200 md:text-xs">
               {navItems.map((n) => {
                 const resolvedHref = resolveHref(n.href);
-
                 const linkProps =
                   "target" in n && n.target === "_blank"
                     ? ({ target: "_blank" as const, rel: "noopener noreferrer" })
@@ -121,18 +115,13 @@ export default function Header() {
                   </Link>
                 );
               })}
-              <a
-                href={contactHref}
-                className="transition-colors hover:text-amber-300"
-              >
+              <a href={contactHref} className="transition-colors hover:text-amber-300">
                 {contactLabel}
               </a>
             </nav>
           </div>
 
-          {/* OIKEA: kielikytkin + CTA */}
           <div className="flex flex-1 items-center justify-end gap-3">
-            {/* Moderni FI/EN-kytkin */}
             <div className="inline-flex items-center rounded-full bg-white/10 p-0.5 text-[10px] md:text-xs">
               <Link
                 href={fiPath}
@@ -165,13 +154,9 @@ export default function Header() {
           </div>
         </Container>
 
-        {/* MOBIILI: logo vasemmalle, oikealla kielikytkin + hampurilainen */}
+        {/* MOBIILI header */}
         <Container className="flex items-center justify-between gap-3 md:hidden">
-          {/* Logo vasemmalle – myös täällä kielikohtainen */}
-          <Link
-            href={isEN ? "/en" : "/"}
-            className="flex items-center gap-2 -ml-6"
-          >
+          <Link href={isEN ? "/en" : "/"} className="flex items-center gap-2 -ml-6">
             <div className="relative flex h-7 w-24 items-center justify-center overflow-visible">
               <Image
                 src="/logo.png"
@@ -184,15 +169,12 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Oikea puoli: kielikytkin + hampurilainen */}
           <div className="flex items-center gap-2">
             <div className="inline-flex items-center rounded-full bg-white/10 p-0.5 text-[10px]">
               <Link
                 href={fiPath}
                 className={`rounded-full px-2 py-0.5 transition ${
-                  !isEN
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-slate-200 hover:text-white"
+                  !isEN ? "bg-white text-slate-900 shadow-sm" : "text-slate-200 hover:text-white"
                 }`}
               >
                 FI
@@ -200,16 +182,13 @@ export default function Header() {
               <Link
                 href={enPath}
                 className={`rounded-full px-2 py-0.5 transition ${
-                  isEN
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-slate-200 hover:text-white"
+                  isEN ? "bg-white text-slate-900 shadow-sm" : "text-slate-200 hover:text-white"
                 }`}
               >
                 EN
               </Link>
             </div>
 
-            {/* Hampurilainen */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -238,7 +217,7 @@ export default function Header() {
           </div>
         </Container>
 
-        {/* MOBIILI: avautuva valikko – OIKEALLE, SMOOTH ALAS HAMPURILAISEN ALTA */}
+        {/* MOBIILI: avautuva valikko */}
         <Container
           className={`md:hidden flex flex-col items-end gap-1 pb-3 text-sm text-slate-100 transition-all duration-200 ease-out origin-top-right ${
             mobileMenuOpen
@@ -248,7 +227,6 @@ export default function Header() {
         >
           {navItems.map((n) => {
             const resolvedHref = resolveHref(n.href);
-
             return (
               <Link
                 key={resolvedHref + n.label}

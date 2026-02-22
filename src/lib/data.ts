@@ -37,7 +37,7 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     title: "Verkkosivut & verkkokaupat",
-    desc: "Näyttävät, hakukoneystävälliset sivut, jotka jäävät mieleen asiakkaallesi.",
+    desc: "Ei pelkkä nettisivu, vaan näkyvyys ja uusia asiakkaita tuovva ja mieleenpainuva kokonaisuus ",
     points: [
       "Suunnittelu yhdessä tarpeen mukaan",
       "Räätälöity ulkoasu (ei valmispohjia)",
@@ -48,6 +48,21 @@ export const SERVICES: Service[] = [
       "Kaikki sivut tehdään yksilöllisesti koodaten, ei valmispohjia. Tämä antaa hyvät lähtökohdat Google-näkyvyydelle ja täyden vapauden toteuttaa ulkoasu juuri sinun tarpeisiin. Sivua voidaan muokata ja päivittää aina kun haluat.",
     img: "/services/website.jpg",
   },
+
+  {
+  title: "Kotisivut ja ylläpito",
+  desc: "Täysi ylläpito ja näkyvä kokonaisuus: SEO, Google Maps ja arvostelut + jatkuva ylläpito.",
+  points: [
+    "Custom-koodattu, nopea ja mobiiliystävällinen sivu",
+    "Hakusanat & tekninen SEO alusta asti",
+    "Google Maps -profiili kuntoon + Maps-upotus",
+    "Arvostelut näkyviin + QR-koodi palautteelle",
+    "Ylläpito: domain, tietoturva, tuki ja näkyvyyden kehitys",
+  ],
+  afterPoints:
+    "Jätä kaikki digitaalinen näkyvyys ja ylläpito minulle, sä voit keskittyä liiketoimintaan ilman huolta digistä, samalla kun näkyvyytesi netissä on aina ajantasalla! ",
+  img: "/services/website.jpg",
+},
   {
     title: "Asiakaspalvelubotti",
     desc: "Tekoälyllä varustettu älykäs asiakaspalvelubotti joka toimii 24/7.",
@@ -60,12 +75,7 @@ export const SERVICES: Service[] = [
     img: "/services/chat.jpg",
     href: "/asiakaspalvelubotti",
   },
-  {
-    title: "Some & mainonta",
-    desc: "Julkaisut, mainokset ja mittarit samassa paketissa.",
-    points: ["Suunnittelu", "Ylläpito", "Mainosbibliot", "Sisältökalenterit", "Raportointi"],
-    img: "/services/some.jpg",
-  },
+  
   {
     title: "Puhelinsovellukset",
     desc: "iPhone- ja Android-sovellukset toiveidesi mukaan.",

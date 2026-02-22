@@ -18,7 +18,8 @@ export default function Services() {
   const isEN = pathname === "/en" || pathname.startsWith("/en/");
   const DATA = isEN ? SERVICES_EN : SERVICES;
 
-  const cards: Service[] = (DATA as Service[]).slice(0, 2);
+  const cards: Service[] = (DATA as Service[]).slice(0, 3);
+
 
   return (
     <div>
@@ -32,7 +33,8 @@ export default function Services() {
           : "Keskityn kahteen asiaan: moderneihin verkkosivuihin ja älykkäisiin asiakaspalvelubotteihin, jotka tuovat oikeita yhteydenottoja."}
       </p>
 
-      <div className="mt-8 grid gap-8 sm:grid-cols-2">
+      <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
         {cards.map((s) => {
           const isBot =
             s.title === "Asiakaspalvelubotti" || s.title === "Customer Service Bot";
