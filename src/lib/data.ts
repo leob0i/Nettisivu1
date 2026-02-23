@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
   },
 
   {
-  title: "Kotisivut ja ylläpito",
+  title: "Kotisivut & ylläpito",
   desc: "Täysi ylläpito ja näkyvä kokonaisuus: SEO, Google Maps ja arvostelut + jatkuva ylläpito.",
   points: [
     "Custom-koodattu, nopea ja mobiiliystävällinen sivu",
@@ -61,7 +61,7 @@ export const SERVICES: Service[] = [
   ],
   afterPoints:
     "Jätä kaikki digitaalinen näkyvyys ja ylläpito minulle, sä voit keskittyä liiketoimintaan ilman huolta digistä, samalla kun näkyvyytesi netissä on aina ajantasalla! ",
-  img: "/services/website.jpg",
+  img: "/services/google.jpg",
 },
   {
     title: "Asiakaspalvelubotti",

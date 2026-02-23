@@ -29,7 +29,11 @@ export default function Header() {
     .map((n) => {
       const isPalvelut = n.label === "Palvelut" || n.label === "Services";
       if (isPalvelut) {
-        return { ...n, href: isEN ? PALVELUT_HREF_EN : PALVELUT_HREF };
+        return {
+          ...n,
+          href: isEN ? PALVELUT_HREF_EN : PALVELUT_HREF,
+          label: isEN ? n.label : "Kotisivut ja ylläpito",
+        };
       }
       return n;
     });

@@ -14,9 +14,10 @@ export default function Page() {
       <Hero />
 
       {/* ✅ Nämä osiot ovat "container-leveydellä" (max-width + padding) */}
-      <Container className="py-12 sm:py-20" id="palvelut">
-        <Services />
-      </Container>
+      <section className="border-t border-white/10 pt-0 pb-12 sm:pb-20" id="palvelut">
+  <Services />
+</section>
+
 
       <Container className="py-12 sm:py-20" id="meista">
         <About />
