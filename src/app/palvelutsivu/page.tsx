@@ -5,9 +5,24 @@ import Container from "@/components/container";
 import Contact from "@/components/contact";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.leodigital.fi"),
   title: "Nettisivu ja ylläpito – kaikki digiasiat yhdestä paikasta | Leo Digital",
   description:
-    "Ammattimaiset nettisivut, hakukonenäkyvyys, Google Maps -näkyvyys ja ylläpito yhdestä paikasta. Sinä keskityt bisnekseen – minä pidän digisi kunnossa. Alk. 399 € + 49 €/kk.",
+    "Ammattimaiset nettisivut, hakukonenäkyvyys, Google Maps -näkyvyys ja ylläpito yhdestä paikasta. Sinä keskityt bisnekseen – minä pidän digisi kunnossa.",
+  alternates: {
+    canonical: "/palvelutsivu",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   keywords: [
     "nettisivut yritykselle",
     "nettisivujen ylläpito",
@@ -23,104 +38,179 @@ export const metadata: Metadata = {
     description:
       "Sinä keskityt bisnekseen – minä pidän digisi kunnossa. Ammattimaisesti rakennettu nettisivu, SEO ja jatkuva ylläpito.",
     type: "website",
+    url: "/palvelutsivu",
+    siteName: "Leo Digital",
+    locale: "fi_FI",
+    images: [
+      {
+        url: "/services/website.jpg",
+        alt: "Leo Digital – nettisivut ja ylläpito",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nettisivu ja ylläpito – kaikki digiasiat yhdestä paikasta | Leo Digital",
+    description:
+      "Sinä keskityt bisnekseen – minä pidän digisi kunnossa. Ammattimaisesti rakennettu nettisivu, SEO ja jatkuva ylläpito.",
+    images: ["/services/website.jpg"],
   },
 };
 
 export default function Page() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.leodigital.fi/#org",
+        name: "Leo Digital",
+        url: "https://www.leodigital.fi",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.leodigital.fi/#website",
+        url: "https://www.leodigital.fi",
+        name: "Leo Digital",
+        publisher: { "@id": "https://www.leodigital.fi/#org" },
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.leodigital.fi/palvelutsivu#webpage",
+        url: "https://www.leodigital.fi/palvelutsivu",
+        name: "Nettisivu ja ylläpito – kaikki digiasiat yhdestä paikasta",
+        isPartOf: { "@id": "https://www.leodigital.fi/#website" },
+        publisher: { "@id": "https://www.leodigital.fi/#org" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.leodigital.fi/palvelutsivu#breadcrumbs",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Etusivu",
+            item: "https://www.leodigital.fi/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Palvelut",
+            item: "https://www.leodigital.fi/palvelutsivu",
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <main className="bg-black text-slate-100" id="top">
+      {/* JSON-LD structured data (SEO) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* ── HERO ── */}
-<section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/services/website.jpg"
+            alt="Leo Digital – nettisivut ja ylläpito"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
 
-  {/* Background image */}
-  <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Dark overlay (valitse yksi vaihtoehto) */}
 
-    <Image
-      src="/services/website.jpg"
-      alt="Leo Digital – nettisivut ja ylläpito"
-      fill
-      priority
-      className="object-cover object-center"
-      sizes="100vw"
-    />
+          {/* 1) Tasainen tumma */}
+          {/* <div className="absolute inset-0 bg-black/65" /> */}
 
-    {/* Dark overlay (valitse yksi vaihtoehto) */}
+          {/* 2) Gradient (suositus herolle) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/65 to-black" />
 
-    {/* 1) Tasainen tumma */}
-    {/* <div className="absolute inset-0 bg-black/65" /> */}
+          {/* 3) Extra “kontrasti” tekstille (valinnainen) */}
+          {/* <div className="absolute inset-0 bg-black/20 mix-blend-multiply" /> */}
+        </div>
 
-    {/* 2) Gradient (suositus herolle) */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/65 to-black" />
-
-    {/* 3) Extra “kontrasti” tekstille (valinnainen) */}
-    {/* <div className="absolute inset-0 bg-black/20 mix-blend-multiply" /> */}
-  </div>
-
- <Container className="relative py-20 sm:py-32 min-h-[560px] sm:min-h-[680px] flex items-center">
-    <div className="mx-auto max-w-6xl text-center">
-      <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
-        Ei jaksa itse digiä?<br />
-        <span className="text-slate-300">Ei hätää, minä hoidan.</span>
-      </h1>
-
-    </div>
-  </Container>
-</section>
-
+        <Container className="relative py-20 sm:py-32 min-h-[560px] sm:min-h-[680px] flex items-center">
+          <div className="mx-auto max-w-6xl text-center">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
+              Ei jaksa itse digiä?
+              <br />
+              <span className="text-slate-300">Ei hätää, minä hoidan.</span>
+            </h1>
+          </div>
+        </Container>
+      </section>
 
       {/* ── MIKSI? ── */}
       <section className="relative -mt-20 sm:-mt-28">
         <Container className="pt-8 sm:pt-10 pb-8 sm:pb-12">
- 
+          <h2 className="text-2xl sm:text-4xl font-bold leading-tight">
+            Sinä keskityt liiketoimintaan, minä pidän digisi kunnossa
+          </h2>
 
-  <h2 className="text-2xl sm:text-4xl font-bold leading-tight">
-    Sinä keskityt liiketoimintaan, minä pidän digisi kunnossa
-  </h2>
+          {/* Tekstit koko leveydelle (mobiili 1 palsta, desktop 2 palstaa) */}
+          <div className="mt-8 grid lg:grid-cols-2 gap-x-8 gap-y-4 text-slate-300 leading-relaxed">
+            <div className="space-y-5">
+              <p>
+                <span className="font-semibold text-slate-100">
+                  Ei pelkkä nettisivu.
+                </span>{" "}
+                Saat kokonaisuuden, joka pitää yrityksesi näkyvänä, uskottavana ja
+                löydettävänä joka kuukausi – minä hoidan digin, sinä keskityt
+                myyntiin ja arkeen.
+              </p>
 
-  {/* Tekstit koko leveydelle (mobiili 1 palsta, desktop 2 palstaa) */}
- <div className="mt-8 grid lg:grid-cols-2 gap-x-8 gap-y-4 text-slate-300 leading-relaxed">
-  <div className="space-y-5">
-    <p>
-      <span className="font-semibold text-slate-100">Ei pelkkä nettisivu.</span>{" "}
-      Saat kokonaisuuden, joka pitää yrityksesi näkyvänä, uskottavana ja löydettävänä joka kuukausi –
-      minä hoidan digin, sinä keskityt myyntiin ja arkeen.
-    </p>
+              <p>
+                <span className="font-semibold text-slate-100">
+                  Huolellinen toteutus.
+                </span>{" "}
+                Ei geneerisiä valmispohjia: sivu rakennetaan nopeaksi,
+                mobiiliystävälliseksi ja viimeistellyksi, jotta asiakkaan on helppo
+                luottaa ja jättää yhteydenotto.
+              </p>
+            </div>
 
-    <p>
-      <span className="font-semibold text-slate-100">Huolellinen toteutus.</span>{" "}
-      Ei geneerisiä valmispohjia: sivu rakennetaan nopeaksi, mobiiliystävälliseksi ja viimeistellyksi,
-      jotta asiakkaan on helppo luottaa ja jättää yhteydenotto.
-    </p>
-  </div>
+            <div className="space-y-5">
+              <p>
+                <span className="font-semibold text-slate-100">
+                  Google-näkyvyys oikein.
+                </span>{" "}
+                Hakusanat, sisältö ja rakenne hiotaan niin, että oikeat ihmiset
+                löytävät sinut silloin kun he etsivät palvelua – ja että erotut
+                kilpailijoista.
+              </p>
 
-  <div className="space-y-5">
-    <p>
-      <span className="font-semibold text-slate-100">Google-näkyvyys oikein.</span>{" "}
-      Hakusanat, sisältö ja rakenne hiotaan niin, että oikeat ihmiset löytävät sinut silloin kun he etsivät
-      palvelua – ja että erotut kilpailijoista.
-    </p>
+              <p>
+                <span className="font-semibold text-slate-100">
+                  Maps & arvostelut kuntoon.
+                </span>{" "}
+                Google-profiili laitetaan kuntoon, arvostelut tuodaan näkyvästi
+                esiin ja palautteen jättäminen tehdään helpoksi (QR-koodi + selkeä
+                ohje). Se kasvattaa luottamusta ja nostaa yhteydenottoja.
+              </p>
+            </div>
 
-    <p>
-      <span className="font-semibold text-slate-100">Maps & arvostelut kuntoon.</span>{" "}
-      Google-profiili laitetaan kuntoon, arvostelut tuodaan näkyvästi esiin ja palautteen jättäminen tehdään
-      helpoksi (QR-koodi + selkeä ohje). Se kasvattaa luottamusta ja nostaa yhteydenottoja.
-    </p>
-  </div>
-
-  <p className="lg:col-span-2 text-slate-400">
-    <span className="font-semibold text-slate-200">Ylläpito ilman säätöä:</span>{" "}
-    päivitykset, tietoturva, domain, SEO ja näkyvyyden kehittäminen pysyvät ajan tasalla. Halutessasi voit
-    päivittää esimerkiksi aukioloajat tai kuukauden tarjouksen myös itse – ilman koodia.
-  </p>
-</div>
-</Container>
+            <p className="lg:col-span-2 text-slate-400">
+              <span className="font-semibold text-slate-200">
+                Ylläpito ilman säätöä:
+              </span>{" "}
+              päivitykset, tietoturva, domain, SEO ja näkyvyyden kehittäminen
+              pysyvät ajan tasalla. Halutessasi voit päivittää esimerkiksi
+              aukioloajat tai kuukauden tarjouksen myös itse – ilman koodia.
+            </p>
+          </div>
+        </Container>
       </section>
 
       {/* ── PAKETIT ── */}
       <section id="paketit">
-  <Container className="pt-6 sm:pt-10 pb-16 sm:pb-24">
-          
-
+        <Container className="pt-6 sm:pt-10 pb-16 sm:pb-24">
           <div className="grid md:grid-cols-2 gap-6">
             <PriceCard
               badge="Paketti 1"
@@ -138,7 +228,6 @@ export default function Page() {
                 "Voit muokata valittuja tekstikenttiä itse",
                 "Max. 8 osiota (lisäsivu 49 €, isommat erikseen)",
                 "Ylläpito: domain, SEO, tuki ja tietoturva",
-                
               ]}
               botNote="Sisältää jatkuvan teknisen ylläpidon ja pienet sisällölliset päivitykset. Laajemmat muutostyöt sovitaan erikseen."
             />
@@ -161,7 +250,6 @@ export default function Page() {
                 "Ylläpito: domain, SEO, tuki ja tietoturva",
               ]}
               botNote="Sisältää jatkuvan kehityksen ja priorisoidun tuen. Kiireelliset muutokset käsitellään etusijalla. Laajemmat projektit sovitaan erikseen."
-              
             />
           </div>
 
@@ -169,19 +257,20 @@ export default function Page() {
           <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
             <div className="flex flex-col sm:flex-row sm:items-center gap-5">
               <div className="flex-1">
-                <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">Lisäpalvelu</p>
-                <h3 className="text-lg font-bold">🤖Asiakaspalvelubotti – 99 € (kertamaksu)</h3>
+                <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">
+                  Lisäpalvelu
+                </p>
+                <h3 className="text-lg font-bold">
+                  🤖Asiakaspalvelubotti – 99 € (kertamaksu)
+                </h3>
                 <p className="mt-2 text-slate-300 text-sm leading-relaxed">
-                  Custom chat-widget ja Q&amp;A – Botti ohjeistaa asiakkaitasi 24/7 ja ohjaa heidät
-                  yhteydenottoon tai varaukseen. Ei erillisiä ylläpitomaksuja.
-                
+                  Custom chat-widget ja Q&amp;A – Botti ohjeistaa asiakkaitasi
+                  24/7 ja ohjaa heidät yhteydenottoon tai varaukseen. Ei erillisiä
+                  ylläpitomaksuja.
                 </p>
               </div>
-              
             </div>
           </div>
-
-         
 
           {/* UKK */}
           <div className="mt-10 grid lg:grid-cols-2 gap-4">
@@ -197,16 +286,12 @@ export default function Page() {
               q="Mitä tapahtuu, jos haluan lopettaa ylläpidon?"
               a="Sopimus on määräaikainen ensinmäiset 3kk, minkä jälkeen se muuttuu toistaiseksi voimassa olevaksi. Sivu ja domain ovat sinun. Voidaan sopia siirrosta tai jatkosta joustavasti – ei piiloehtoja."
             />
-            
+
             <Faq
               q="Voiko sivun ulkoasun räätälöidä täysin?"
               a="Kyllä. Koska kaikki rakennetaan oikealla koodilla ilman valmispohjia, ulkoasu ja toiminnot tehdään juuri sinun brändisi ja tarpeidesi mukaan."
             />
-           
           </div>
-
-
-          
         </Container>
       </section>
       <Contact />
@@ -248,14 +333,13 @@ function PriceCard({
     <div
       className={[
         "rounded-3xl border p-7 sm:p-8 flex flex-col",
-        featured
-          ? "border-white/25 bg-white/10"
-          : "border-white/10 bg-white/5",
+        featured ? "border-white/25 bg-white/10" : "border-white/10 bg-white/5",
       ].join(" ")}
     >
       <div className="flex items-start justify-between gap-3 mb-2">
-        <span className="text-xs text-slate-400 uppercase tracking-widest">{badge}</span>
-        
+        <span className="text-xs text-slate-400 uppercase tracking-widest">
+          {badge}
+        </span>
       </div>
 
       <h3 className="text-xl font-bold">{title}</h3>
@@ -286,8 +370,6 @@ function PriceCard({
           {botNote}
         </p>
       )}
-
-      
     </div>
   );
 }

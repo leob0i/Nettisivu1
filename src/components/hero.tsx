@@ -46,8 +46,8 @@ export default function Hero() {
 
         <p className="mt-4 text-white/85 max-w-2xl mx-auto">
           {isEN
-            ? "I design and build modern websites and smart customer service bots that bring real enquiries — without unnecessary complexity."
-            : "Suunnittelen ja toteutan moderneja verkkosivuja sekä älykkäitä asiakaspalvelubotteja, jotka tuovat oikeita yhteydenottoja – ilman turhaa monimutkaisuutta."}
+            ? "I build fast, modern websites — and keep them visible on Google with SEO, analytics, and ongoing maintenance that turns visits into real enquiries."
+            : "Teen nopeat, modernit nettisivut, ja pidän ne näkyvänä Googlessa SEO:n, analytiikan ja jatkuvan ylläpidon avulla, jotta käynnit muuttuvat oikeiksi yhteydenotoiksi."}
         </p>
 
         {/* WhatsApp-nappi (Pyydä tarjous tilalle) */}
