@@ -12,6 +12,9 @@ import { SITE_EN } from "@/lib/site.en";
 const PALVELUT_HREF = "/palvelutsivu";
 const PALVELUT_HREF_EN = "/en/palvelutsivu";
 
+const PALVELUT_LABEL_FI = "Nettisivu ja ylläpito";
+const PALVELUT_LABEL_EN = "Website & Maintenance";
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -32,7 +35,7 @@ export default function Header() {
         return {
           ...n,
           href: isEN ? PALVELUT_HREF_EN : PALVELUT_HREF,
-          label: isEN ? n.label : "Kotisivut ja ylläpito",
+          label: isEN ? PALVELUT_LABEL_EN : PALVELUT_LABEL_FI,
         };
       }
       return n;

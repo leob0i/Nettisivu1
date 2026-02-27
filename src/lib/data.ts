@@ -45,7 +45,7 @@ export const SERVICES: Service[] = [
       "Kaikki mahdollista toiveidesi mukaan",
     ],
     afterPoints:
-      "Kaikki sivut tehdään yksilöllisesti koodaten, ei valmispohjia. Tämä antaa hyvät lähtökohdat Google-näkyvyydelle ja täyden vapauden toteuttaa ulkoasu juuri sinun tarpeisiin. Sivua voidaan muokata ja päivittää aina kun haluat.",
+      "Kaikki sivut tehdään yksilöllisesti koodaten, ei valmispohjia. Tämä antaa hyvät lähtökohdat Google-näkyvyydelle ja täyden vapauden toteuttaa ulkoasu juuri sinun tarpeisiin. Alkaen 299 € (sis. 4 sivua.)",
     img: "/services/website.jpg",
   },
 

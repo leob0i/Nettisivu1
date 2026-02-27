@@ -146,7 +146,7 @@ export default function Page() {
             <PriceCard
               badge="Paketti 2"
               title="Laaja kokonaisuus"
-              startPrice="699 €"
+              startPrice="799 €"
               monthly="119 €/kk"
               featured
               description="Kasvavalle yritykselle, joka tarvitsee laajemman sivuston, monikielisyyden, analytiikan ja prioriteettipalvelun. Kaikki asiat järjestyksessä kellon ympäri."
